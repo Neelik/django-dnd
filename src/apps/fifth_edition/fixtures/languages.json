@@ -1,0 +1,162 @@
+[
+  {
+    "fields": {
+      "name": "Abyssal",
+      "speakers": "Demons",
+      "script": "Infernal",
+      "exotic": true
+    },
+    "pk": 1,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Celestial",
+      "speakers": "Celestials",
+      "script": "Celestial",
+      "exotic": true
+    },
+    "pk": 2,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Common",
+      "speakers": "Humans",
+      "script": "Common",
+      "exotic": false
+    },
+    "pk": 3,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Deep Speech",
+      "speakers": "Mind Flayers, beholders",
+      "script": "---",
+      "exotic": true
+    },
+    "pk": 4,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Draconic",
+      "speakers": "Dragons, dragonborn",
+      "script": "Draconic",
+      "exotic": true
+    },
+    "pk": 5,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Dwarvish",
+      "speakers": "Dwarves",
+      "script": "Dwarvish",
+      "exotic": false
+    },
+    "pk": 6,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Elvish",
+      "speakers": "Elves",
+      "script": "Elvish",
+      "exotic": false
+    },
+    "pk": 7,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Giant",
+      "speakers": "Ogres, giants",
+      "script": "Dwarvish",
+      "exotic": false
+    },
+    "pk": 8,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Gnomish",
+      "speakers": "Gnomes",
+      "script": "Dwarvish",
+      "exotic": false
+    },
+    "pk": 9,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Goblin",
+      "speakers": "Goblinoids",
+      "script": "Dwarvish",
+      "exotic": false
+    },
+    "pk": 10,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Halfling",
+      "speakers": "Halflings",
+      "script": "Common",
+      "exotic": false
+    },
+    "pk": 11,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Infernal",
+      "speakers": "Devils",
+      "script": "Infernal",
+      "exotic": true
+    },
+    "pk": 12,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Orc",
+      "speakers": "Orcs",
+      "script": "Dwarvish",
+      "exotic": false
+    },
+    "pk": 13,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Primordial",
+      "speakers": "Elementals",
+      "script": "Dwarvish",
+      "exotic": true
+    },
+    "pk": 14,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Sylvan",
+      "speakers": "Fey creatures",
+      "script": "Elvish",
+      "exotic": true
+    },
+    "pk": 15,
+    "model": "fifth_edition.language"
+  },
+  {
+    "fields": {
+      "name": "Undercommon",
+      "speakers": "Underdark traders",
+      "script": "Elvish",
+      "exotic": true
+    },
+    "pk": 16,
+    "model": "fifth_edition.language"
+  }
+]

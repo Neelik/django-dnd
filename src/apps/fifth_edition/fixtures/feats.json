@@ -1,0 +1,380 @@
+[
+  {
+    "fields": {
+      "name": "Alert",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Athlete",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Actor",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Charger",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Crossbow Expert",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Defensive Duelist",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Dual Wielder",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Dungeon Delver",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Durable",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Elemental Adept",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Grappler",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Great Weapon Master",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Healer",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Heavily Armored",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Heavy Armor Master",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Inspiring Leader",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Keen Mind",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Lightly Armored",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Linguist",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Lucky",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Mage Slayer",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Magic Initiate",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Martial Adept",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Medium Armor Master",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Mobile",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Moderately Armored",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Mounted Combatant",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Observant",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Polearm Master",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Resilient",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Ritual Caster",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Savage Attacker",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Sentinel",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Sharpshooter",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Shield Master",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Skilled",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Skulker",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Spell Sniper",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Tavern Brawler",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Tough",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "War Caster",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  },
+  {
+    "fields": {
+      "name": "Weapon Master",
+      "description": "",
+      "prerequisite": ""
+    },
+    "pk": 1,
+    "model": "fifth_edition.feat"
+  }
+]

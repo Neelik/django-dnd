@@ -1,0 +1,142 @@
+[
+  {
+    "fields": {
+      "name": "Hill Dwarf",
+      "age_range": "50-350",
+      "size": "S",
+      "speed": 25
+    },
+    "pk": 1,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Mountain Dwarf",
+      "age_range": "50-350",
+      "size": "S",
+      "speed": 25
+    },
+    "pk": 2,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "High Elf",
+      "age_range": "100-750",
+      "size": "M",
+      "speed": 30
+    },
+    "pk": 3,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Dark Elf",
+      "age_range": "100-750",
+      "size": "M",
+      "speed": 30
+    },
+    "pk": 4,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Wood Elf",
+      "age_range": "100-750",
+      "size": "M",
+      "speed": 30
+    },
+    "pk": 5,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Lightfoot Halfling",
+      "age_range": "20-150",
+      "size": "S",
+      "speed": 25
+    },
+    "pk": 6,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Stout Halfling",
+      "age_range": "20-150",
+      "size": "S",
+      "speed": 25
+    },
+    "pk": 7,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Human",
+      "age_range": "18-90",
+      "size": "M",
+      "speed": 30
+    },
+    "pk": 8,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Dragonborn",
+      "age_range": "15-80",
+      "size": "M",
+      "speed": 30
+    },
+    "pk": 9,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Forest Gnome",
+      "age_range": "40-500",
+      "size": "S",
+      "speed": 25
+    },
+    "pk": 10,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Rock Gnome",
+      "age_range": "40-500",
+      "size": "S",
+      "speed": 25
+    },
+    "pk": 11,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Half-Elf",
+      "age_range": "20-200",
+      "size": "M",
+      "speed": 30
+    },
+    "pk": 12,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Half-Orc",
+      "age_range": "14-75",
+      "size": "M",
+      "speed": 30
+    },
+    "pk": 13,
+    "model": "fifth_edition.race"
+  },
+  {
+    "fields": {
+      "name": "Tiefling",
+      "age_range": "18-100",
+      "size": "M",
+      "speed": 30
+    },
+    "pk": 14,
+    "model": "fifth_edition.race"
+  }
+]

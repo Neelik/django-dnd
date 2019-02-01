@@ -1,0 +1,372 @@
+[
+  {
+    "fields": {
+      "cost": 50,
+      "name": "Alchemist's Supplies",
+      "set": "Artisan's Tools",
+      "weight": 8
+    },
+    "pk": 1,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 20,
+      "name": "Brewer's Supplies",
+      "set": "Artisan's Tools",
+      "weight": 9
+    },
+    "pk": 2,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 10,
+      "name": "Calligrapher's Supplies",
+      "set": "Artisan's Tools",
+      "weight": 5
+    },
+    "pk": 3,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 8,
+      "name": "Carpenter's Tools",
+      "set": "Artisan's Tools",
+      "weight": 6
+    },
+    "pk": 4,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 15,
+      "name": "Cartographer's Tools",
+      "set": "Artisan's Tools",
+      "weight": 6
+    },
+    "pk": 5,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 5,
+      "name": "Cobbler's Tools",
+      "set": "Artisan's Tools",
+      "weight": 5
+    },
+    "pk": 6,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 1,
+      "name": "Cook's Utensils",
+      "set": "Artisan's Tools",
+      "weight": 8
+    },
+    "pk": 7,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 30,
+      "name": "Glassblower's Tools",
+      "set": "Artisan's Tools",
+      "weight": 5
+    },
+    "pk": 8,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 25,
+      "name": "Jeweler's Tools",
+      "set": "Artisan's Tools",
+      "weight": 2
+    },
+    "pk": 9,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 5,
+      "name": "Leatherworker's Tools",
+      "set": "Artisan's Tools",
+      "weight": 5
+    },
+    "pk": 10,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 10,
+      "name": "Mason's Tools",
+      "set": "Artisan's Tools",
+      "weight": 8
+    },
+    "pk": 11,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 10,
+      "name": "Painter's Supplies",
+      "set": "Artisan's Tools",
+      "weight": 5
+    },
+    "pk": 12,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 10,
+      "name": "Potter's Tools",
+      "set": "Artisan's Tools",
+      "weight": 3
+    },
+    "pk": 13,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 20,
+      "name": "Smith's Tools",
+      "set": "Artisan's Tools",
+      "weight": 8
+    },
+    "pk": 14,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 50,
+      "name": "Tinker's Tools",
+      "set": "Artisan's Tools",
+      "weight": 10
+    },
+    "pk": 15,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 1,
+      "name": "Weaver's Tools",
+      "set": "Artisan's Tools",
+      "weight": 5
+    },
+    "pk": 16,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 1,
+      "name": "Woodcarver's Tools",
+      "set": "Artisan's Tools",
+      "weight": 5
+    },
+    "pk": 17,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 25,
+      "name": "Disguise Kit",
+      "set": "General",
+      "weight": 3
+    },
+    "pk": 18,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 15,
+      "name": "Forgery Kit",
+      "set": "General",
+      "weight": 5
+    },
+    "pk": 19,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 0.1,
+      "name": "Dice Set",
+      "set": "Gaming Set",
+      "weight": 0.0
+    },
+    "pk": 20,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 1,
+      "name": "Dragonchess Set",
+      "set": "Gaming Set",
+      "weight": 0.5
+    },
+    "pk": 21,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 0.5,
+      "name": "Playing Card Set",
+      "set": "Gaming Set",
+      "weight": 0
+    },
+    "pk": 22,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 1,
+      "name": "Three-Dragon Ante Set",
+      "set": "Gaming Set",
+      "weight": 0
+    },
+    "pk": 23,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 5,
+      "name": "Herbalism Kit",
+      "set": "General",
+      "weight": 3
+    },
+    "pk": 24,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 30,
+      "name": "Bagpipes",
+      "set": "Musical Instrument",
+      "weight": 6
+    },
+    "pk": 25,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 6,
+      "name": "Drum",
+      "set": "Musical Instrument",
+      "weight": 3
+    },
+    "pk": 26,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 25,
+      "name": "Dulcimer",
+      "set": "Musical Instrument",
+      "weight": 10
+    },
+    "pk": 27,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 2,
+      "name": "Flute",
+      "set": "Musical Instrument",
+      "weight": 1
+    },
+    "pk": 28,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 35,
+      "name": "Lute",
+      "set": "Musical Instrument",
+      "weight": 2
+    },
+    "pk": 29,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 30,
+      "name": "Lyre",
+      "set": "Musical Instrument",
+      "weight": 2
+    },
+    "pk": 30,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 3,
+      "name": "Horn",
+      "set": "Musical Instrument",
+      "weight": 2
+    },
+    "pk": 31,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 12,
+      "name": "Pan Flute",
+      "set": "Musical Instrument",
+      "weight": 2
+    },
+    "pk": 32,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 2,
+      "name": "Shawm",
+      "set": "Musical Instrument",
+      "weight": 1
+    },
+    "pk": 33,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 30,
+      "name": "Viol",
+      "set": "Musical Instrument",
+      "weight": 1
+    },
+    "pk": 34,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 25,
+      "name": "Navigator's Tools",
+      "set": "General",
+      "weight": 2
+    },
+    "pk": 35,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 50,
+      "name": "Poisoner's Kit",
+      "set": "General",
+      "weight": 2
+    },
+    "pk": 36,
+    "model": "fifth_edition.tool"
+  },
+  {
+    "fields": {
+      "cost": 25,
+      "name": "Thieves' Tools",
+      "set": "General",
+      "weight": 1
+    },
+    "pk": 37,
+    "model": "fifth_edition.tool"
+  }
+]
