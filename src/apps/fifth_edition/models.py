@@ -1,5 +1,5 @@
 from django.db import models
-from apps.common.models import EditMixin, get_ability_score_increase
+from .common import EditMixin, get_ability_score_increase
 
 
 class Alignment(models.Model):
