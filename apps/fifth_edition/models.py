@@ -53,6 +53,24 @@ class Character(models.Model):
         unique_together = ("name", "character_class", "race", "player_name")
 
 
+class Feat(models.Model):
+    """
+    Model storing information about the various Feats available in DnD 5e
+
+    All feats are from Official WotC materials only
+
+    """
+    name = models.CharField(max_length=32)
+    description = models.TextField()
+    prerequisite = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Feats"
+
+
 class Language(models.Model):
     """
     Model storing information about the various languages available in DnD 5e
@@ -123,19 +141,3 @@ class Tool(models.Model):
         verbose_name_plural = "Tools"
 
 
-class Feat(models.Model):
-    """
-    Model storing information about the various Feats available in DnD 5e
-
-    All feats are from Official WotC materials only
-
-    """
-    name = models.CharField(max_length=32)
-    description = models.TextField()
-    prerequisite = models.CharField(max_length=32)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name_plural = "Feats"
