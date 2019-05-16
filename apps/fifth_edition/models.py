@@ -1,5 +1,54 @@
 from django.db import models
 from .common import EditMixin, get_ability_score_increase
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+
+class AbilityScore(models.Model):
+    """
+    Model of ability scores assigned to characters in DnD
+    """
+
+    strength = models.PositiveIntegerField(default=1, verbose_name='Strength',
+                                           validators=[MaxValueValidator(30), MinValueValidator(1)])
+
+    @property
+    def strength_modifier(self):
+        return (self.strength - 10) // 2
+
+    dexterity = models.PositiveIntegerField(default=1, verbose_name='Dexterity',
+                                            validators=[MaxValueValidator(30), MinValueValidator(1)])
+
+    @property
+    def dexterity_modifier(self):
+        return (self.dexterity - 10) // 2
+    constitution = models.PositiveIntegerField(default=1, verbose_name='Constitution',
+                                               validators=[MaxValueValidator(30), MinValueValidator(1)])
+
+    @property
+    def constitution_modifier(self):
+        return (self.constitution - 10) // 2
+    intelligence = models.PositiveIntegerField(default=1, verbose_name='Intelligence',
+                                               validators=[MaxValueValidator(30), MinValueValidator(1)])
+
+    @property
+    def intelligence_modifier(self):
+        return (self.intelligence - 10) // 2
+    wisdom = models.PositiveIntegerField(default=1, verbose_name='Wisdom',
+                                         validators=[MaxValueValidator(30), MinValueValidator(1)])
+
+    @property
+    def wisdom_modifier(self):
+        return (self.wisdom - 10) // 2
+    charisma = models.PositiveIntegerField(default=1, verbose_name='Charisma',
+                                           validators=[MaxValueValidator(30), MinValueValidator(1)])
+
+    @property
+    def charisma_modifier(self):
+        return (self.charisma - 10) // 2
+
+    def __str__(self):
+        return "Str: {}, Dex: {}, Con: {}, Int: {}, Wis: {}, Cha: {}".format(
+            self.strength, self.dexterity, self.constitution, self.intelligence, self.wisdom, self.charisma)
 
 
 class Alignment(models.Model):
