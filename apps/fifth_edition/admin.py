@@ -13,6 +13,17 @@ class PhysicalAttackAdmin(admin.ModelAdmin):
     search_fields = ("name", "damage_type")
 
 
+class SkillsAdmin(admin.ModelAdmin):
+    list_display = ("id", "ability_score")
+
+
+class SpellcastingAdmin(admin.ModelAdmin):
+    list_display = ("id", "ability_score", "spellcasting_ability")
+    search_fields = ("spellcasting_ability",)
+
+
 # Register your models here.
 admin.site.register(models.Character, CharacterAdmin)
 admin.site.register(models.PhysicalAttack, PhysicalAttackAdmin)
+admin.site.register(models.Skills, SkillsAdmin)
+admin.site.register(models.Spellcasting, SpellcastingAdmin)

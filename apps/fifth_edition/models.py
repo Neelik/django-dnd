@@ -212,6 +212,122 @@ class Race(models.Model):
         verbose_name_plural = "Races"
 
 
+class Skills(models.Model):
+    """
+    Model to relate individual skills to their ability scores
+    """
+
+    ability_score = models.OneToOneField(AbilityScore, on_delete=models.CASCADE)
+
+    @property
+    def acrobatics(self):
+        return self.ability_score.dexterity_modifier
+
+    @property
+    def animal_handling(self):
+        return self.ability_score.wisdom_modifier
+
+    @property
+    def arcana(self):
+        return self.ability_score.intelligence_modifier
+
+    @property
+    def athletics(self):
+        return self.ability_score.strength_modifier
+
+    @property
+    def deception(self):
+        return self.ability_score.charisma_modifier
+
+    @property
+    def history(self):
+        return self.ability_score.intelligence_modifier
+
+    @property
+    def insight(self):
+        return self.ability_score.wisdom_modifier
+
+    @property
+    def intimidation(self):
+        return self.ability_score.charisma_modifier
+
+    @property
+    def investigation(self):
+        return self.ability_score.intelligence_modifier
+
+    @property
+    def medicine(self):
+        return self.ability_score.wisdom_modifier
+
+    @property
+    def nature(self):
+        return self.ability_score.intelligence_modifier
+
+    @property
+    def perception(self):
+        return self.ability_score.wisdom_modifier
+
+    @property
+    def performance(self):
+        return self.ability_score.charisma_modifier
+
+    @property
+    def persuasion(self):
+        return self.ability_score.charisma_modifier
+
+    @property
+    def religion(self):
+        return self.ability_score.intelligence_modifier
+
+    @property
+    def sleight_of_hand(self):
+        return self.ability_score.dexterity_modifier
+
+    @property
+    def stealth(self):
+        return self.ability_score.dexterity_modifier
+
+    @property
+    def survival(self):
+        return self.ability_score.wisdom_modifier
+
+    class Meta:
+        verbose_name_plural = "Skills"
+
+
+class Spellcasting(models.Model):
+    """
+    Model to track the information related to spellcasting attacks, modifiers, and saves
+    """
+    SPELLCASTING_ABILITY_CHOICES = (
+        ("Str", "Strength"),
+        ("Dex", "Dexterity"),
+        ("Con", "Constitution"),
+        ("Int", "Intelligence"),
+        ("Wis", "Wisdom"),
+        ("Cha", "Charisma"),
+    )
+
+    ability_score = models.OneToOneField(AbilityScore, on_delete=models.CASCADE)
+    spellcasting_ability = models.CharField(max_length=3, choices=SPELLCASTING_ABILITY_CHOICES)
+
+    @property
+    def spell_attack(self):
+        attr = "{}_modifier".format(self.get_spellcasting_ability_display().lower())
+        return getattr(self.ability_score, attr)
+
+    @property
+    def spell_save(self):
+        attr = "{}_modifier".format(self.get_spellcasting_ability_display().lower())
+        return 8 + getattr(self.ability_score, attr)
+
+    def __str__(self):
+        return "Spellcasting with {}".format(self.spellcasting_ability)
+
+    class Meta:
+        verbose_name_plural = "Spellcasting"
+
+
 class Tool(models.Model):
     """
     Model to store information about the various tools available in DnD 5e
@@ -234,5 +350,3 @@ class Tool(models.Model):
 
     class Meta:
         verbose_name_plural = "Tools"
-
-
