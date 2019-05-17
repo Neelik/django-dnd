@@ -28,3 +28,14 @@ class AbilityScoreSerializer(serializers.ModelSerializer):
                   "charisma", "charisma_modifier")
         read_only_fields = ("strength_modifier", "dexterity_modifier", "constitution_modifier", "intelligence_modifier",
                             "wisdom_modifier", "charisma_modifier")
+
+
+class PhysicalAttackSerializer(serializers.ModelSerializer):
+    """
+    Serializer class for Physical Attack model
+    """
+
+    class Meta:
+        model = models.PhysicalAttack
+        fields = ("id", "ability_score", "name", "damage_type", "dice_type", "dice_count", "str_atk_bonus", "dex_atk_bonus")
+        read_only_fields = ("str_atk_bonus", "dex_atk_bonus")

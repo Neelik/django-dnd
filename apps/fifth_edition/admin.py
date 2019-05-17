@@ -8,5 +8,11 @@ class CharacterAdmin(admin.ModelAdmin):
     readonly_fields = ("id",)
 
 
+class PhysicalAttackAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", 'damage_type')
+    search_fields = ("name", "damage_type")
+
+
 # Register your models here.
 admin.site.register(models.Character, CharacterAdmin)
+admin.site.register(models.PhysicalAttack, PhysicalAttackAdmin)
