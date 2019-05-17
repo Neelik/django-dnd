@@ -137,6 +137,52 @@ class Language(models.Model):
         verbose_name_plural = "Languages"
 
 
+class PhysicalAttack(models.Model):
+    """
+    Model for information related to physical attacks
+    """
+    DAMAGE_TYPE_CHOICES = (
+        ("bl", "Bludgeoning"),
+        ("pi", "Piercing"),
+        ("sl", "Slashing"),
+        ("ac", "Acid"),
+        ("co", "Cold"),
+        ("fi", "Fire"),
+        ("fo", "Force"),
+        ("li", "Lightning"),
+        ("ne", "Necrotic"),
+        ("po", "Poison"),
+        ("ps", "Psychic"),
+        ("ra", "Radiant"),
+        ("th", "Thunder"),
+    )
+
+    DICE_TYPE_CHOICES = (
+        ("d4", "d4"),
+        ("d6", "d6"),
+        ("d8", "d8"),
+        ("d10", "d10"),
+        ("d12", "d12"),
+    )
+
+    ability_score = models.ForeignKey(AbilityScore, on_delete=models.CASCADE)
+    name = models.CharField(max_length=128)
+    damage_type = models.CharField(max_length=2, choices=DAMAGE_TYPE_CHOICES)
+    dice_type = models.CharField(max_length=3, choices=DICE_TYPE_CHOICES)
+    dice_count = models.IntegerField(default=1)
+
+    @property
+    def str_atk_bonus(self):
+        return self.ability_score.strength_modifier
+
+    @property
+    def dex_atk_bonus(self):
+        return self.ability_score.dexterity_modifier
+
+    def __str__(self):
+        return "Name: {} Dice Count: {} Dice Type: {} Damage Type: {}".format(self.name, self.dice_count, self.dice_type, self.damage_type)
+
+
 class Race(models.Model):
     """
     Model storing information about the various races in DnD 5e
