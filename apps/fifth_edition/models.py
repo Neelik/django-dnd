@@ -102,6 +102,33 @@ class Character(models.Model):
         unique_together = ("name", "character_class", "race", "player_name")
 
 
+class CombatInfo(models.Model):
+    """
+    Model for information related to Combat Information
+    """
+
+    DICE_TYPE_CHOICES = (
+        ("d4", "d4"),
+        ("d6", "d6"),
+        ("d8", "d8"),
+        ("d10", "d10"),
+        ("d12", "d12"),
+    )
+
+    armor_class = models.IntegerField(default=10, verbose_name='Armor Class')
+    initiative = models.IntegerField(default=0, verbose_name='Initiative')
+    speed = models.IntegerField(default=0, verbose_name='Speed')
+    total_hit_points = models.PositiveIntegerField(default=1, verbose_name='Total Hit Points')
+    current_hit_points = models.PositiveIntegerField(default=1, verbose_name='Current Hit Points')
+    temporary_hit_points = models.PositiveIntegerField(default=0, verbose_name='Temporary Hit Points')
+    hit_dice_total = models.PositiveIntegerField(default=1, verbose_name='Total')
+    hit_dice = models.CharField(max_length=3, verbose_name='Hit Dice', choices=DICE_TYPE_CHOICES)
+    death_save_success = models.PositiveIntegerField(default=0, verbose_name='Success',
+                                                     validators=[MaxValueValidator(3), MinValueValidator(0)])
+    death_save_failure = models.PositiveIntegerField(default=0, verbose_name='Failure',
+                                                     validators=[MaxValueValidator(3), MinValueValidator(0)])
+
+
 class Feat(models.Model):
     """
     Model storing information about the various Feats available in DnD 5e

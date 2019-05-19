@@ -51,6 +51,16 @@ class AbilityScoreSerializer(serializers.ModelSerializer):
                             "wisdom_modifier", "charisma_modifier")
 
 
+class CombatInfoSerializer(serializers.ModelSerializer):
+    """
+    Serializer class for the Combat Info model
+    """
+
+    class Meta:
+        model = models.CombatInfo
+        fields = "__all__"
+
+
 class PhysicalAttackSerializer(serializers.ModelSerializer):
     """
     Serializer class for Physical Attack model
