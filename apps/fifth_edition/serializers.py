@@ -96,3 +96,23 @@ class SpellcastingSerializer(DynamicFieldsModelSerializer):
         model = models.Spellcasting
         fields = ("id", "ability_score", "spellcasting_ability", "spell_attack", "spell_save")
         read_only_fields = ("spell_attack", "spell_save")
+
+
+class BackgroundSerializer(serializers.ModelSerializer):
+    """
+    Serializer class for the Background model
+    """
+    class Meta:
+        model = models.Background
+        fields = "__all__"
+
+
+class SaveSerializer(serializers.ModelSerializer):
+    """
+    Serializer class for Save model
+    """
+
+    class Meta:
+        model = models.Save
+        fields = ("ability_score", "str_save", "dex_save", "cons_save", "int_save", "wis_save", "cha_save")
+        read_only_fields = ("str_save", "dex_save", "cons_save", "int_save", "wis_save", "cha_save")
