@@ -355,6 +355,67 @@ class Spellcasting(models.Model):
         verbose_name_plural = "Spellcasting"
 
 
+class Background(models.Model):
+
+    """
+    Model to store information about a character's background in DnD 5e.
+    See https://www.dandwiki.com/wiki/5e_Backgrounds for
+    guidelines.
+    """
+
+    name = models.CharField(max_length=32, null=True, blank=True, verbose_name='Background Name')
+    spec = models.CharField(max_length=255, null=True, blank=True, verbose_name='Specialization')
+    feature = models.CharField(max_length=255, null=True, blank=True, verbose_name='Feature')
+    alt_feature = models.CharField(max_length=255, null=True, blank=True, verbose_name='Alternative Feature')
+    traits = models.CharField(max_length=255, null=True, blank=True, verbose_name='Traits')
+    ideals = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ideals')
+    bonds = models.CharField(max_length=255, null=True, blank=True, verbose_name='Bonds')
+    flaws = models.CharField(max_length=255, null=True, blank=True, verbose_name='Flaws')
+    equipment = models.CharField(max_length=50, null=True, blank=True, verbose_name='Granted Equipment')
+
+    def __str__(self):
+        return self.name.capitalize()
+
+    class Meta:
+        verbose_name_plural = "Backgrounds"
+
+
+class Save(models.Model):
+    """
+    Model to relate individual skills to their ability scores
+    """
+
+    ability_score = models.OneToOneField(AbilityScore, on_delete=models.CASCADE, related_name="ability_saves")
+
+    @property
+    def dex_save(self):
+        return self.ability_score.dexterity_modifier
+
+    @property
+    def wis_save(self):
+        return self.ability_score.wisdom_modifier
+
+    @property
+    def int_save(self):
+        return self.ability_score.intelligence_modifier
+
+    @property
+    def str_save(self):
+        return self.ability_score.strength_modifier
+
+    @property
+    def cha_save(self):
+        return self.ability_score.charisma_modifier
+
+    @property
+    def cons_save(self):
+        return self.ability_score.constitution_modifier
+
+    class Meta:
+
+        verbose_name_plural = "Saves"
+
+
 class Tool(models.Model):
     """
     Model to store information about the various tools available in DnD 5e
