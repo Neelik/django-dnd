@@ -1,6 +1,6 @@
-from .models import Character, AbilityScore, Skills, Spellcasting
+from .models import Character, AbilityScore, Skills, Spellcasting, Save
 from .serializers import (CharacterSerializer, AbilityScoreSerializer, SkillsSerializer,
-                          SpellcastingSerializer)
+                          SpellcastingSerializer, SaveSerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -58,6 +58,35 @@ class CharacterViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = CharacterSerializer
     queryset = Character.objects.none()
+
+
+class SaveViewGET(ListAPIView):
+    """
+    Class to retrieve Save objects
+    """
+
+    permission_classes = (AllowAny,)
+    serializer_class = SaveSerializer
+
+    def get_queryset(self):
+        """
+        Method to return the appropriate QuerySet of Save objects
+
+        :return: QuerySet of Save objects
+        """
+        queryset = Save.objects.none()
+        queryset = queryset | Save.objects.filter(ability_score=self.kwargs.get("id"))
+
+        return queryset.order_by("id")
+
+
+class SaveViewPOST(CreateAPIView):
+    """
+    Class to create new Save objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = SaveSerializer
+    queryset = Save.objects.none()
 
 
 class SkillsViewPOST(CreateAPIView):
