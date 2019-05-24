@@ -1,6 +1,6 @@
-from .models import Character, AbilityScore, Skills, Spellcasting, Save
+from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack
 from .serializers import (CharacterSerializer, AbilityScoreSerializer, SkillsSerializer,
-                          SpellcastingSerializer, SaveSerializer)
+                          SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -58,6 +58,34 @@ class CharacterViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = CharacterSerializer
     queryset = Character.objects.none()
+
+
+class PhysicalAttackViewGET(ListAPIView):
+    """
+    Class to retrieve Physical Attack entries
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = PhysicalAttackSerializer
+
+    def get_queryset(self):
+        """
+        Method to return the appropriate QuerySet of Physical Attack entries
+        :return: QuerySet of Physical Attack entries
+        """
+        query_params = orm_ify_query_params(self.request.query_params, "Physical Attack")
+        queryset = PhysicalAttack.objects.none()
+        queryset = queryset | PhysicalAttack.objects.filter(**query_params)
+
+        return queryset.order_by("id")
+
+
+class PhysicalAttackViewPOST(CreateAPIView):
+    """
+    Class to create new Physical Attack entries
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = PhysicalAttackSerializer
+    queryset = PhysicalAttack.objects.none()
 
 
 class SaveViewGET(ListAPIView):
