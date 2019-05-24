@@ -26,9 +26,13 @@ urlpatterns = [
 
     # fifth_edition
     url(r'^api/ability-scores$', fe_views.AbilityScoreViewGET.as_view()),
+    url(r'^api/ability-scores/(?P<id>\d+)/saves$', fe_views.SaveViewGET.as_view()),
     url(r'^api/ability-scores/(?P<id>\d+)/spellcasting$', fe_views.SpellcastingViewGET.as_view()),
     url(r'^api/characters$', fe_views.CharacterViewGET.as_view()),
     url(r'^api/characters/create/$', fe_views.CharacterViewPOST.as_view()),
+    url(r'^api/physical-attack/create/$', fe_views.PhysicalAttackViewPOST.as_view()),
+    url(r'^api/physical-attack$', fe_views.PhysicalAttackViewGET.as_view()),
+    url(r'^api/save/create/$', fe_views.SaveViewPOST.as_view()),
     url(r'^api/skills/create/$', fe_views.SkillsViewPOST.as_view()),
     url(r'^api/spellcasting/create/$', fe_views.SpellcastingViewPOST.as_view()),
 ]
