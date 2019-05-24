@@ -88,6 +88,23 @@ class TestCharacterViewGET(TestCase):
         self.assertTrue(len(results) == 1)
         self.assertEqual(results[0]["name"], "Character 1")
 
+    def test_character_get_view_query_by_name_multiple_results_successful(self):
+        """
+        Unit test to verify that querying by name works correctly
+
+        :return: None
+        """
+
+        client = APIClient()
+        response = client.get("/api/characters?name=Character", format="json")
+
+        # Assert status code
+        self.assertEqual(response.status_code, 200)
+
+        # Assert data in response results, specifically verifying order of objects by level
+        results = response.data["results"]
+        self.assertTrue(len(results) > 1)
+
     def test_character_get_view_query_by_name_no_results(self):
         """
         Unit test to verify that querying by a name that doesn't exist works correctly
