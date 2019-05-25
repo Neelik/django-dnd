@@ -1,6 +1,7 @@
-from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack
+from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo
 from .serializers import (CharacterSerializer, AbilityScoreSerializer, SkillsSerializer,
-                          SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer)
+                          SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer,
+                          CombatInfoSerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -58,6 +59,49 @@ class CharacterViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = CharacterSerializer
     queryset = Character.objects.none()
+
+
+class CombatInfoViewGET(ListAPIView):
+    """
+    View to retrieve Combat Info objects
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = CombatInfoSerializer
+
+    def get_queryset(self):
+        """
+        Method to retrieve the appropriate queryset of Combat Info to be returned by the API
+
+        :return: Query Set of Combat Info objects
+        """
+
+        query_params = orm_ify_query_params(self.request.query_params, "Combat Info")
+        queryset = CombatInfo.objects.none()
+        queryset = queryset | CombatInfo.objects.filter(**query_params)
+
+        return queryset.order_by("id")
+
+
+class CombatInfoViewPOST(CreateAPIView):
+    """
+    Class to create new Combat Info entries
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = CombatInfoSerializer
+    queryset = CombatInfo.objects.none()
+
+
+class CombatInfoViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    Method to PUT and DELETE a Combat Info
+
+    :return: None
+    """
+
+    lookup_field = 'id'
+    serializer_class = CombatInfoSerializer
+    queryset = CombatInfo.objects.all()
 
 
 class PhysicalAttackViewGET(ListAPIView):
@@ -124,6 +168,27 @@ class SkillsViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = SkillsSerializer
     queryset = Skills.objects.none()
+
+
+class SkillsViewGET(ListAPIView):
+    """
+    Class to retrieve new Skills entries
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = SkillsSerializer
+
+    def get_queryset(self):
+        """
+        Method to retrieve the appropriate queryset of Characters Skills to be returned by the API
+
+        :return: Query Set of Skills objects
+        """
+
+        queryset = Skills.objects.none()
+        queryset = queryset | Skills.objects.filter(ability_score=self.kwargs.get("id"))
+
+        return queryset.order_by("id")
 
 
 class SpellcastingViewGET(ListAPIView):
