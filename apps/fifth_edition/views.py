@@ -1,7 +1,7 @@
-from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo
+from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background
 from .serializers import (CharacterSerializer, AbilityScoreSerializer, SkillsSerializer,
                           SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer,
-                          CombatInfoSerializer)
+                          CombatInfoSerializer, BackgroundSerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -27,6 +27,61 @@ class AbilityScoreViewGET(ListAPIView):
         queryset = queryset | AbilityScore.objects.filter(**query_params)
 
         return queryset.order_by("id")
+
+
+class AbilityScoreViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    Method to PUT and DELETE Ability Scores
+
+    :return: VOID
+    """
+    lookup_field = 'id'
+    serializer_class = AbilityScoreSerializer
+    queryset = AbilityScore.objects.all()
+
+
+class BackgroundViewGET(ListAPIView):
+    """
+    View to retrieve Background objects
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = BackgroundSerializer
+
+    def get_queryset(self):
+        """
+        Method to retrieve the appropriate queryset of Background objects to be returned by the API
+
+        :return: QuerySet of Background objects
+        """
+
+        query_params = orm_ify_query_params(self.request.query_params, "Background")
+        queryset = Background.objects.none()
+        queryset = queryset | Background.objects.filter(**query_params)
+
+        return queryset.order_by("id")
+
+
+class BackgroundViewPOST(CreateAPIView):
+    """
+    Class to create new Background entries
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = BackgroundSerializer
+    queryset = Background.objects.none()
+
+
+class BackgroundViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    Method to PUT and DELETE a Background
+
+    :return: None
+    """
+
+    lookup_field = 'id'
+    serializer_class = BackgroundSerializer
+    queryset = Background.objects.all()
 
 
 class CharacterViewGET(ListAPIView):
@@ -59,6 +114,18 @@ class CharacterViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = CharacterSerializer
     queryset = Character.objects.none()
+
+
+class CharacterViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    Method to PUT and DELETE a character
+
+    :return: VOID
+    """
+
+    lookup_field = 'id'
+    serializer_class = CharacterSerializer
+    queryset = Character.objects.all()
 
 
 class CombatInfoViewGET(ListAPIView):

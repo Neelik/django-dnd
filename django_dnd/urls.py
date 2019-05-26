@@ -26,11 +26,16 @@ urlpatterns = [
 
     # fifth_edition
     url(r'^api/ability-scores$', fe_views.AbilityScoreViewGET.as_view()),
+    url(r'^api/ability-scores/put-delete/(?P<id>\d+)/$', fe_views.AbilityScoreViewPUT.as_view()),
     url(r'^api/ability-scores/(?P<id>\d+)/saves$', fe_views.SaveViewGET.as_view()),
     url(r'^api/ability-scores/(?P<id>\d+)/skills$', fe_views.SkillsViewGET.as_view()),
     url(r'^api/ability-scores/(?P<id>\d+)/spellcasting$', fe_views.SpellcastingViewGET.as_view()),
+    url(r'^api/background$', fe_views.BackgroundViewGET.as_view()),
+    url(r'^api/background/create/$', fe_views.BackgroundViewPOST.as_view()),
+    url(r'^api/background/put-delete/(?P<id>\d+)/$', fe_views.BackgroundViewPUT.as_view()),
     url(r'^api/characters$', fe_views.CharacterViewGET.as_view()),
     url(r'^api/characters/create/$', fe_views.CharacterViewPOST.as_view()),
+    url(r'^api/characters/put-delete/(?P<id>\d+)/$', fe_views.CharacterViewPUT.as_view()),
     url(r'^api/combat-info$', fe_views.CombatInfoViewGET.as_view()),
     url(r'^api/combat-info/create/$', fe_views.CombatInfoViewPOST.as_view()),
     url(r'^api/combat-info/put-delete/(?P<id>\d+)/$', fe_views.CombatInfoViewPUT.as_view()),

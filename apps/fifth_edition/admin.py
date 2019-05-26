@@ -1,6 +1,10 @@
 from apps.fifth_edition import models as models
 from django.contrib import admin
 
+class AbilityScoreAdmin(admin.ModelAdmin):
+    list_display = ("id", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma")
+    search_fields = ("strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma")
+
 
 class BackgroundAdmin(admin.ModelAdmin):
     list_display = ("id", "name",)
