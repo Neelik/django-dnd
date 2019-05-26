@@ -29,6 +29,17 @@ class AbilityScoreViewGET(ListAPIView):
         return queryset.order_by("id")
 
 
+class AbilityScoreViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    Method to PUT and DELETE Ability Scores
+
+    :return: VOID
+    """
+    lookup_field = 'id'
+    serializer_class = AbilityScoreSerializer
+    queryset = AbilityScore.objects.all()
+
+
 class CharacterViewGET(ListAPIView):
     """
     View to retrieve Character objects
