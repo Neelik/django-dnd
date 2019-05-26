@@ -61,6 +61,18 @@ class CharacterViewPOST(CreateAPIView):
     queryset = Character.objects.none()
 
 
+class CharacterViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    Method to PUT and DELETE a character
+
+    :return: VOID
+    """
+
+    lookup_field = 'id'
+    serializer_class = CharacterSerializer
+    queryset = Character.objects.all()
+
+
 class CombatInfoViewGET(ListAPIView):
     """
     View to retrieve Combat Info objects
