@@ -1,6 +1,6 @@
 Django>=2.1.6
 django-cors-headers==3.2.1
-django-debug-toolbar==1.11
+django-debug-toolbar==2.2
 django-filter==2.1.0
 djangorestframework==3.11.0
 hashids==1.2.0
