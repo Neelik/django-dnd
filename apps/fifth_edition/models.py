@@ -430,7 +430,7 @@ class Tool(models.Model):
 
     cost = models.DecimalField(decimal_places=2, max_digits=10, help_text="Value in gold pieces.")
     name = models.CharField(max_length=32)
-    set = models.CharField(max_length=16, choices=TOOL_SET_CHOICES)
+    set = models.CharField(max_length=32, choices=TOOL_SET_CHOICES)
     weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Value in pounds.")
 
     def __str__(self):
