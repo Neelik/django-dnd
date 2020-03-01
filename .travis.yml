@@ -8,7 +8,7 @@ script:
 services:
   - postgresql
 before_script:
-  - psql -c 'CREATE USER djangodnd WITH PASSWORD "djangodnd";' -U postgres
+  - psql -c 'CREATE ROLE djangodnd LOGIN;' -U postgres
 notifications:
   email:
     - tylerfrench@u.boisestate.edu
