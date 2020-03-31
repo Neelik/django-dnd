@@ -128,6 +128,37 @@ class CombatInfo(models.Model):
     death_save_failure = models.PositiveIntegerField(default=0, verbose_name='Failure',
                                                      validators=[MaxValueValidator(3), MinValueValidator(0)])
 
+class Armor(models.Model):
+	"""
+	Model for information relating to armor.
+	"""
+	ARMORTYPE_TYPE_CHOICES = (
+		("Light", "Light"),
+		("Medium", "Medium"),
+		("Heavy", "Heavy"),
+		("Shield", "Shield")
+	)
+
+	STEALTH_TYPE_CHOICES = (
+		("Disadvantage", "Disadvantage"),
+		("None", "None"),
+		("Advantage", "Advantage")
+	)
+
+	armortype = models.CharField(max_length=32, choices=ARMORTYPE_TYPE_CHOICES)
+	name = models.CharField(max_length=32)
+	cost = models.IntegerField(help_text="Value in gold pieces.")
+	ac = models.IntegerField(help_text="Armor Class (AC) of armor.")
+	strength = models.IntegerField(help_text="Strength requirement to wear without Movement Speed (-10) penalty.")
+	stealth = models.CharField(max_length=32, choices=STEALTH_TYPE_CHOICES)
+	weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Weight in pounds.")
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name_plural = "Armor"
+
 
 class Feat(models.Model):
     """
@@ -146,6 +177,21 @@ class Feat(models.Model):
     class Meta:
         verbose_name_plural = "Feats"
 
+
+class Gear(models.Model):
+	"""
+	Model storing information on various adventuring gear
+	"""
+	name = models.CharField(max_length=64)
+	cost = models.IntegerField(help_text="Value in gold pieces.")
+	weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Weight in pounds.")
+	description = models.TextField()
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name_plural = "Gear"
 
 class Language(models.Model):
     """
@@ -208,6 +254,21 @@ class PhysicalAttack(models.Model):
 
     def __str__(self):
         return "Name: {} Dice Count: {} Dice Type: {} Damage Type: {}".format(self.name, self.dice_count, self.dice_type, self.damage_type)
+
+
+class Weapon(models.Model):
+	"""
+	Model storing information on weapons, with a foreign key to a physical attack
+	"""
+	name = models.CharField(max_length=64)
+	physical_attack = models.ForeignKey(PhysicalAttack, on_delete=models.CASCADE)
+	description = models.TextField()
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name_plural = "Weapons"
 
 
 class Race(models.Model):

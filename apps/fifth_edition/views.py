@@ -1,7 +1,8 @@
-from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background
+from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background, Armor, Weapon, Gear
 from .serializers import (CharacterSerializer, AbilityScoreSerializer, SkillsSerializer,
                           SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer,
-                          CombatInfoSerializer, BackgroundSerializer)
+                          CombatInfoSerializer, BackgroundSerializer, ArmorSerializer,
+						  WeaponSerializer, GearSerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -39,6 +40,32 @@ class AbilityScoreViewPUT(RetrieveUpdateDestroyAPIView):
     serializer_class = AbilityScoreSerializer
     queryset = AbilityScore.objects.all()
 
+
+class ArmorViewGET(ListAPIView):
+	"""
+	View to retrieve armor objects
+	"""
+	lookup_field = 'id'
+	serializer_class = ArmorSerializer
+	queryset = Armor.objects.all()
+
+class ArmorViewPOST(CreateAPIView):
+    """
+    View to create new armor objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = ArmorSerializer
+    queryset = Armor.objects.none()
+
+class ArmorViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE an armor object by id
+
+	:return: None
+    """
+    lookup_field = 'id'
+    serializer_class = ArmorSerializer
+    queryset = Armor.objects.all()
 
 class BackgroundViewGET(ListAPIView):
     """
@@ -169,6 +196,33 @@ class CombatInfoViewPUT(RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
     serializer_class = CombatInfoSerializer
     queryset = CombatInfo.objects.all()
+
+
+class GearViewGET(ListAPIView):
+	"""
+	View to retrieve all Gear objects
+	"""
+	lookup_field = 'id'
+	serializer_class = GearSerializer
+	queryset = Gear.objects.all()
+
+class GearViewPOST(CreateAPIView):
+    """
+    View to create new Gear objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = GearSerializer
+    queryset = Gear.objects.none()
+
+class GearViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE a Gear object by id
+
+	:return: None
+    """
+    lookup_field = 'id'
+    serializer_class = GearSerializer
+    queryset = Gear.objects.all()
 
 
 class PhysicalAttackViewGET(ListAPIView):
@@ -306,3 +360,30 @@ class SpellcastingViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = SpellcastingSerializer
     queryset = Spellcasting.objects.none()
+
+
+class WeaponViewGET(ListAPIView):
+	"""
+	View to retrieve all Weapon objects
+	"""
+	lookup_field = 'id'
+	serializer_class = WeaponSerializer
+	queryset = Weapon.objects.all()
+
+class WeaponViewPOST(CreateAPIView):
+    """
+    View to create new Weapon objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = WeaponSerializer
+    queryset = Weapon.objects.none()
+
+class WeaponViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE Weapon objects by id
+
+	:return: None
+    """
+    lookup_field = 'id'
+    serializer_class = WeaponSerializer
+    queryset = Weapon.objects.all()

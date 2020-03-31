@@ -33,6 +33,16 @@ class CharacterSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ArmorSerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for Armor model
+	"""
+
+	class Meta:
+		model = models.Armor
+		fields = "__all__"
+
+
 class AbilityScoreSerializer(serializers.ModelSerializer):
     """
     Serializer class for the AbilityScore model
@@ -116,3 +126,22 @@ class SaveSerializer(serializers.ModelSerializer):
         model = models.Save
         fields = ("ability_score", "str_save", "dex_save", "cons_save", "int_save", "wis_save", "cha_save")
         read_only_fields = ("str_save", "dex_save", "cons_save", "int_save", "wis_save", "cha_save")
+
+
+class WeaponSerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for Weapon model
+	"""
+
+	class Meta:
+		model = models.Weapon
+		fields = "__all__"
+
+class GearSerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for Gear model
+	"""
+
+	class Meta:
+		model = models.Gear
+		fields = "__all__"

@@ -1,0 +1,171 @@
+[
+	{
+		"fields": {
+		  "armortype": "Light",
+		  "name": "Padded",
+		  "cost": 5,
+		  "ac": 11,
+		  "strength": 0,
+		  "stealth": "Disadvantage",
+		  "weight": 8
+		},
+		"pk": 1,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Light",
+			"name": "Leather",
+			"cost": 10,
+			"ac": 11,
+			"strength": 0,
+			"stealth": "None",
+			"weight": 10
+		},
+		"pk": 2,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Light",
+			"name": "Studded Leather",
+			"cost": 45,
+			"ac": 12,
+			"strength": 0,
+			"stealth": "None",
+			"weight": 13
+		},
+		"pk": 3,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Medium",
+			"name": "Hide",
+			"cost": 10,
+			"ac": 12,
+			"strength": 0,
+			"stealth": "None",
+			"weight": 12
+		},
+		"pk": 4,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Medium",
+			"name": "Chain Shirt",
+			"cost": 50,
+			"ac": 13,
+			"strength": 0,
+			"stealth": "None",
+			"weight": 20
+		},
+		"pk": 5,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Medium",
+			"name": "Scale Mail",
+			"cost": 50,
+			"ac": 14,
+			"strength": 0,
+			"stealth": "Disadvantage",
+			"weight": 45
+		},
+		"pk": 6,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Medium",
+			"name": "Breastplate",
+			"cost": 400,
+			"ac": 14,
+			"strength": 0,
+			"stealth": "None",
+			"weight": 20
+		},
+		"pk": 7,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Medium",
+			"name": "Half Plate",
+			"cost": 750,
+			"ac": 15,
+			"strength": 0,
+			"stealth": "Disadvantage",
+			"weight": 40
+		},
+		"pk": 8,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Heavy",
+			"name": "Ring Mail",
+			"cost": 30,
+			"ac": 14,
+			"strength": 0,
+			"stealth": "Disadvantage",
+			"weight": 40
+		},
+		"pk": 9,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Heavy",
+			"name": "Chain Mail",
+			"cost": 75,
+			"ac": 16,
+			"strength": 13,
+			"stealth": "Disadvantage",
+			"weight": 55
+		},
+		"pk": 10,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Heavy",
+			"name": "Splint",
+			"cost": 200,
+			"ac": 17,
+			"strength": 15,
+			"stealth": "Disadvantage",
+			"weight": 60
+		},
+		"pk": 11,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Heavy",
+			"name": "Plate",
+			"cost": 1500,
+			"ac": 18,
+			"strength": 15,
+			"stealth": "Disadvantage",
+			"weight": 65
+		},
+		"pk": 12,
+		"model": "fifth_edition.armor"
+	},
+	{
+		"fields": {
+			"armortype": "Shield",
+			"name": "Shield",
+			"cost": 10,
+			"ac": 2,
+			"strength": 0,
+			"stealth": "None",
+			"weight": 6
+		},
+		"pk": 13,
+		"model": "fifth_edition.armor"
+	}
+]
