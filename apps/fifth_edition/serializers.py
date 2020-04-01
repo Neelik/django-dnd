@@ -32,6 +32,16 @@ class CharacterSerializer(serializers.ModelSerializer):
         model = models.Character
         fields = "__all__"
 
+class NPCSerializer(serializers.ModelSerializer):
+    """
+    Serializer class for the NPC model
+    """
+
+    class Meta:
+        model = models.NPC
+        fields = "__all__"
+
+
 
 class ArmorSerializer(serializers.ModelSerializer):
 	"""

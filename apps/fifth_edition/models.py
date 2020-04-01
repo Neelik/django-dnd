@@ -101,6 +101,35 @@ class Character(models.Model):
     class Meta:
         unique_together = ("name", "character_class", "race", "player_name")
 
+class NPC(models.Model):
+    """
+    Model to store information about a NPC in DnD 5e
+    """
+
+    RACE_CHOICES = (
+        ("Dragonborn", "Dragonborn"),
+        ("Dwarf", "Dwarf"),
+        ("Elf", "Elf"),
+        ("Gnome", "Gnome"),
+        ("Half Elf", "Half Elf"),
+        ("Half Orc", "Half Orc"),
+        ("Halfling", "Halfling"),
+        ("Human", "Human"),
+        ("Tiefling", "Tiefling")
+    )
+
+    name = models.CharField(max_length=50, verbose_name='NPC Name')
+    level = models.IntegerField(default=1, verbose_name='Level')
+    npc_class = models.CharField(max_length=20, verbose_name='Class')
+    background = models.TextField(verbose_name='Background', null=True, blank=True)
+    race = models.CharField(max_length=20, choices=RACE_CHOICES, verbose_name='Race')
+    alignment = models.CharField(max_length=50, verbose_name='Alignment')
+
+    def __str__(self):
+        return self.name.capitalize()
+
+    class Meta:
+        unique_together = ("name", "npc_class", "race")
 
 class CombatInfo(models.Model):
     """

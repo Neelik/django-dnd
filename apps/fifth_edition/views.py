@@ -1,5 +1,5 @@
-from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background, Armor, Weapon, Gear
-from .serializers import (CharacterSerializer, AbilityScoreSerializer, SkillsSerializer,
+from .models import Character, NPC, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background, Armor, Weapon, Gear
+from .serializers import (CharacterSerializer, NPCSerializer, AbilityScoreSerializer, SkillsSerializer,
                           SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer,
                           CombatInfoSerializer, BackgroundSerializer, ArmorSerializer,
 						  WeaponSerializer, GearSerializer)
@@ -153,6 +153,50 @@ class CharacterViewPUT(RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
     serializer_class = CharacterSerializer
     queryset = Character.objects.all()
+
+
+class NPCViewGET(ListAPIView):
+    """
+    View to retrieve NPC objects
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = NPCSerializer
+
+    def get_queryset(self):
+        """
+        Method to retrieve the appropriate queryset of NPC objects to be returned by the API
+
+        :return: QuerySet of NPC objects
+        """
+
+        query_params = orm_ify_query_params(self.request.query_params, "NPC")
+        queryset = NPC.objects.none()
+        queryset = queryset | NPC.objects.filter(**query_params)
+
+        return queryset.order_by("-level")
+
+
+class NPCViewPOST(CreateAPIView):
+    """
+    Class to create new NPC entries
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = NPCSerializer
+    queryset = NPC.objects.none()
+
+
+class NPCViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    Method to PUT and DELETE a NPC
+
+    :return: VOID
+    """
+
+    lookup_field = 'id'
+    serializer_class = NPCSerializer
+    queryset = NPC.objects.all()
 
 
 class CombatInfoViewGET(ListAPIView):
