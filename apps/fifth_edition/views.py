@@ -1,8 +1,8 @@
-from .models import Character, NPC, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background, Armor, Weapon, Gear
+from .models import Character, NPC, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background, Armor, Weapon, Gear, Currency
 from .serializers import (CharacterSerializer, NPCSerializer, AbilityScoreSerializer, SkillsSerializer,
                           SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer,
                           CombatInfoSerializer, BackgroundSerializer, ArmorSerializer,
-						  WeaponSerializer, GearSerializer)
+						  WeaponSerializer, GearSerializer, CurrencySerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -152,7 +152,34 @@ class CharacterViewPUT(RetrieveUpdateDestroyAPIView):
 
     lookup_field = 'id'
     serializer_class = CharacterSerializer
-    queryset = Character.objects.all()
+    queryset = Currency.objects.all()
+
+
+class CurrencyViewGET(ListAPIView):
+	"""
+	View to retrieve Currency objects
+	"""
+	lookup_field = 'id'
+	serializer_class = CurrencySerializer
+	queryset = Currency.objects.all()
+
+class CurrencyViewPOST(CreateAPIView):
+    """
+    View to create new Currency objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = CurrencySerializer
+    queryset = Currency.objects.none()
+
+class CurrencyViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE an Currency object by id
+
+	:return: None
+    """
+    lookup_field = 'id'
+    serializer_class = CurrencySerializer
+    queryset = Currency.objects.all()
 
 
 class NPCViewGET(ListAPIView):

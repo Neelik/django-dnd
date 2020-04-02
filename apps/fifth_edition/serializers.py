@@ -53,6 +53,16 @@ class ArmorSerializer(serializers.ModelSerializer):
 		fields = "__all__"
 
 
+class CurrencySerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for Currency model
+	"""
+
+	class Meta:
+		model = models.Currency
+		fields = "__all__"
+
+
 class AbilityScoreSerializer(serializers.ModelSerializer):
     """
     Serializer class for the AbilityScore model

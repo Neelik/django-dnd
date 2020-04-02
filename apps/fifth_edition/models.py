@@ -528,3 +528,94 @@ class Tool(models.Model):
 
     class Meta:
         verbose_name_plural = "Tools"
+
+
+class Currency(models.Model):
+	"""
+	Model to store and interact with the currency a character owns
+	"""
+	character = models.OneToOneField(Character, on_delete=models.CASCADE, related_name="character_currency")
+	balance = models.PositiveIntegerField(default=0)
+	electrum_use = models.BooleanField(default=False)
+	electrum = models.PositiveIntegerField(default=0)
+
+	@property
+	def give_copper(self, amount):
+		balance += amount
+
+	@property
+	def give_silver(self, amount):
+		balance += 10*amount
+
+	@property
+	def give_electrum(self, amount):
+		electrum += amount
+
+	@property
+	def give_gold(self, amount):
+		balance += 100*amount
+
+	@property
+	def give_platinum(self, amount):
+		balance += 1000*amount
+
+	@property
+	def spend_copper(self, amount):
+		if amount < balance:
+			balance -= amount
+			return True
+		return False
+
+	@property
+	def spend_silver(self, amount):
+		if amount*10 < balance:
+			balance -= amount*10
+			return True
+		return False
+
+	@property
+	def spend_electrum(self, amount):
+		if amount < electrum:
+			electrum -= amount
+			return True
+		return False
+
+	@property
+	def spend_gold(self, amount):
+		if amount*100 < balance:
+			balance -= amount*100
+			return True
+		return False
+
+	@property
+	def spend_platinum(self, amount):
+		if amount*1000 < balance:
+			balance -= amount*100
+			return True
+		return False
+
+	@property
+	def copper(self):
+		return balance % 10
+
+	property
+	def silver(self):
+		return balance % 1000 % 100 // 10
+
+	@property
+	def electrum(self):
+		return electrum
+
+	@property
+	def gold(self):
+		return balance % 1000 // 100
+
+	@property
+	def platinum(self):
+		return balance // 1000
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name_plural = "Currency"
