@@ -152,7 +152,7 @@ class CharacterViewPUT(RetrieveUpdateDestroyAPIView):
 
     lookup_field = 'id'
     serializer_class = CharacterSerializer
-    queryset = Currency.objects.all()
+    queryset = Character.objects.all()
 
 
 class CurrencyViewGET(ListAPIView):
