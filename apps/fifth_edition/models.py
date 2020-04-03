@@ -224,9 +224,9 @@ class PhysicalAttack(models.Model):
     name = models.CharField(max_length=128)
     weapon_type = models.CharField(max_length=128)   
     properties = models.CharField(max_length=128)
-    dice_type = models.CharField(max_length=3, blank=true, null=true, choices=DICE_TYPE_CHOICES)
-    dice_count = models.IntegerField(default=1, blank=true, null=true)  
-    damage_type = models.CharField(max_length=2, blank=true, null=true, choices=DAMAGE_TYPE_CHOICES)
+    dice_type = models.CharField(max_length=3, blank=True, null=True, choices=DICE_TYPE_CHOICES)
+    dice_count = models.IntegerField(default=1, blank=True, null=True)  
+    damage_type = models.CharField(max_length=2, blank=True, null=True, choices=DAMAGE_TYPE_CHOICES)
 
     @property
     def str_atk_bonus(self):
