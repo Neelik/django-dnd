@@ -212,6 +212,7 @@ class PhysicalAttack(models.Model):
     )
 
     DICE_TYPE_CHOICES = (
+        ("1", "1"),
         ("d4", "d4"),
         ("d6", "d6"),
         ("d8", "d8"),
@@ -221,9 +222,11 @@ class PhysicalAttack(models.Model):
 
     ability_score = models.ForeignKey(AbilityScore, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    damage_type = models.CharField(max_length=2, choices=DAMAGE_TYPE_CHOICES)
-    dice_type = models.CharField(max_length=3, choices=DICE_TYPE_CHOICES)
-    dice_count = models.IntegerField(default=1)
+    weapon_type = models.CharField(max_length=128)   
+    properties = models.CharField(max_length=128)
+    dice_type = models.CharField(max_length=3, blank=true, null=true, choices=DICE_TYPE_CHOICES)
+    dice_count = models.IntegerField(default=1, blank=true, null=true)  
+    damage_type = models.CharField(max_length=2, blank=true, null=true, choices=DAMAGE_TYPE_CHOICES)
 
     @property
     def str_atk_bonus(self):
