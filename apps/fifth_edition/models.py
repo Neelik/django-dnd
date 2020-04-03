@@ -69,38 +69,6 @@ class Alignment(models.Model):
         verbose_name_plural = "Alignments"
 
 
-class Character(models.Model):
-    """
-    Model to store information about a character in DnD 5e
-    """
-
-    RACE_CHOICES = (
-        ("Dragonborn", "Dragonborn"),
-        ("Dwarf", "Dwarf"),
-        ("Elf", "Elf"),
-        ("Gnome", "Gnome"),
-        ("Half Elf", "Half Elf"),
-        ("Half Orc", "Half Orc"),
-        ("Halfling", "Halfling"),
-        ("Human", "Human"),
-        ("Tiefling", "Tiefling")
-    )
-
-    name = models.CharField(max_length=50, verbose_name='Character Name')
-    level = models.IntegerField(default=1, verbose_name='Level')
-    character_class = models.CharField(max_length=20, verbose_name='Class')
-    background = models.TextField(verbose_name='Background', null=True, blank=True)
-    player_name = models.CharField(max_length=50, verbose_name='Players Name')
-    race = models.CharField(max_length=20, choices=RACE_CHOICES, verbose_name='Race')
-    alignment = models.CharField(max_length=50, verbose_name='Alignment')
-    experience_points = models.PositiveIntegerField(default=0, verbose_name='Experience Points')
-
-    def __str__(self):
-        return self.name.capitalize()
-
-    class Meta:
-        unique_together = ("name", "character_class", "race", "player_name")
-
 class NPC(models.Model):
     """
     Model to store information about a NPC in DnD 5e
@@ -157,37 +125,6 @@ class CombatInfo(models.Model):
     death_save_failure = models.PositiveIntegerField(default=0, verbose_name='Failure',
                                                      validators=[MaxValueValidator(3), MinValueValidator(0)])
 
-class Armor(models.Model):
-	"""
-	Model for information relating to armor.
-	"""
-	ARMORTYPE_TYPE_CHOICES = (
-		("Light", "Light"),
-		("Medium", "Medium"),
-		("Heavy", "Heavy"),
-		("Shield", "Shield")
-	)
-
-	STEALTH_TYPE_CHOICES = (
-		("Disadvantage", "Disadvantage"),
-		("None", "None"),
-		("Advantage", "Advantage")
-	)
-
-	armortype = models.CharField(max_length=32, choices=ARMORTYPE_TYPE_CHOICES)
-	name = models.CharField(max_length=32)
-	cost = models.IntegerField(help_text="Value in gold pieces.")
-	ac = models.IntegerField(help_text="Armor Class (AC) of armor.")
-	strength = models.IntegerField(help_text="Strength requirement to wear without Movement Speed (-10) penalty.")
-	stealth = models.CharField(max_length=32, choices=STEALTH_TYPE_CHOICES)
-	weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Weight in pounds.")
-
-	def __str__(self):
-		return self.name
-
-	class Meta:
-		verbose_name_plural = "Armor"
-
 
 class Feat(models.Model):
     """
@@ -207,21 +144,6 @@ class Feat(models.Model):
         verbose_name_plural = "Feats"
 
 
-class Gear(models.Model):
-	"""
-	Model storing information on various adventuring gear
-	"""
-	name = models.CharField(max_length=64)
-	cost = models.IntegerField(help_text="Value in gold pieces.")
-	weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Weight in pounds.")
-	description = models.TextField()
-
-	def __str__(self):
-		return self.name
-
-	class Meta:
-		verbose_name_plural = "Gear"
-
 class Language(models.Model):
     """
     Model storing information about the various languages available in DnD 5e
@@ -237,6 +159,36 @@ class Language(models.Model):
 
     class Meta:
         verbose_name_plural = "Languages"
+
+
+class PhysicalDefense(models.Model):
+	"""
+	Model for information related to physical defense
+	"""
+	DEFENSE_TYPE_CHOICES = (
+		("Light", "Light"),
+		("Medium", "Medium"),
+		("Heavy", "Heavy"),
+		("Shield", "Shield")
+	)
+
+	STEALTH_TYPE_CHOICES = (
+		("Disadvantage", "Disadvantage"),
+		("None", "None"),
+		("Advantage", "Advantage")
+	)
+
+	defensetype = models.CharField(max_length=32, choices=DEFENSE_TYPE_CHOICES)
+	name = models.CharField(max_length=32)
+	ac = models.IntegerField(help_text="Armor Class (AC) of armor.")
+	strength = models.IntegerField(help_text="Strength requirement to wear without Movement Speed (-10) penalty.")
+	stealth = models.CharField(max_length=32, choices=STEALTH_TYPE_CHOICES)
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name_plural = "PhysicalDefense"
 
 
 class PhysicalAttack(models.Model):
@@ -285,19 +237,66 @@ class PhysicalAttack(models.Model):
         return "Name: {} Dice Count: {} Dice Type: {} Damage Type: {}".format(self.name, self.dice_count, self.dice_type, self.damage_type)
 
 
-class Weapon(models.Model):
+class Equipment(models.Model):
 	"""
-	Model storing information on weapons, with a foreign key to a physical attack
+	Model storing information about all equipment
 	"""
+	EQUIPMENT_TYPE_CHOICES = {
+		("Armor", "Armor"),
+		("Weapon", "Weapon"),
+		("Gear", "Gear"),
+		("Tool", "Tool"),
+		("Other", "Other")
+	}
+
 	name = models.CharField(max_length=64)
-	physical_attack = models.ForeignKey(PhysicalAttack, on_delete=models.CASCADE)
+	cost = models.PositiveIntegerField(help_text="Value in gold pieces.")
+	weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Weight in pounds.")
 	description = models.TextField()
+	type = models.CharField(max_length=32, choices=EQUIPMENT_TYPE_CHOICES)
+
+	physical_attack = models.ForeignKey(PhysicalAttack, on_delete=models.CASCADE, blank=True, null=True)
+	physical_defense = models.ForeignKey(PhysicalDefense, on_delete=models.CASCADE, blank=True, null=True)
 
 	def __str__(self):
 		return self.name
 
 	class Meta:
-		verbose_name_plural = "Weapons"
+		verbose_name_plural = "Equipment"
+
+
+class Character(models.Model):
+	"""
+	Model to store information about a character in DnD 5e
+	"""
+
+	RACE_CHOICES = (
+		("Dragonborn", "Dragonborn"),
+		("Dwarf", "Dwarf"),
+		("Elf", "Elf"),
+		("Gnome", "Gnome"),
+		("Half Elf", "Half Elf"),
+		("Half Orc", "Half Orc"),
+		("Halfling", "Halfling"),
+		("Human", "Human"),
+		("Tiefling", "Tiefling")
+	)
+
+	name = models.CharField(max_length=50, verbose_name='Character Name')
+	level = models.IntegerField(default=1, verbose_name='Level')
+	character_class = models.CharField(max_length=20, verbose_name='Class')
+	background = models.TextField(verbose_name='Background', null=True, blank=True)
+	player_name = models.CharField(max_length=50, verbose_name='Players Name')
+	race = models.CharField(max_length=20, choices=RACE_CHOICES, verbose_name='Race')
+	alignment = models.CharField(max_length=50, verbose_name='Alignment')
+	experience_points = models.PositiveIntegerField(default=0, verbose_name='Experience Points')
+	equipment = models.ManyToManyField(Equipment, blank=True)
+
+	def __str__(self):
+		return self.name.capitalize()
+
+	class Meta:
+		unique_together = ("name", "character_class", "race", "player_name")
 
 
 class Race(models.Model):

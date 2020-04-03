@@ -1,8 +1,7 @@
-from .models import Character, NPC, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background, Armor, Weapon, Gear, Currency
+from .models import Character, NPC, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background, Currency, Equipment, PhysicalDefense
 from .serializers import (CharacterSerializer, NPCSerializer, AbilityScoreSerializer, SkillsSerializer,
-                          SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer,
-                          CombatInfoSerializer, BackgroundSerializer, ArmorSerializer,
-						  WeaponSerializer, GearSerializer, CurrencySerializer)
+                          SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer, EquipmentSerializer,
+                          CombatInfoSerializer, BackgroundSerializer, CurrencySerializer, PhysicalDefenseSerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -41,31 +40,32 @@ class AbilityScoreViewPUT(RetrieveUpdateDestroyAPIView):
     queryset = AbilityScore.objects.all()
 
 
-class ArmorViewGET(ListAPIView):
+class EquipmentViewGET(ListAPIView):
 	"""
-	View to retrieve armor objects
+	View to retrieve equipment objects
 	"""
 	lookup_field = 'id'
-	serializer_class = ArmorSerializer
-	queryset = Armor.objects.all()
+	serializer_class = EquipmentSerializer
+	queryset = Equipment.objects.all()
 
-class ArmorViewPOST(CreateAPIView):
+class EquipmentViewPOST(CreateAPIView):
     """
-    View to create new armor objects
+    View to create new equipment objects
     """
     permission_classes = (AllowAny,)
-    serializer_class = ArmorSerializer
-    queryset = Armor.objects.none()
+    serializer_class = EquipmentSerializer
+    queryset = Equipment.objects.none()
 
-class ArmorViewPUT(RetrieveUpdateDestroyAPIView):
+class EquipmentViewPUT(RetrieveUpdateDestroyAPIView):
     """
-    View to PUT and DELETE an armor object by id
+    View to PUT and DELETE an equipment object by id
 
 	:return: None
     """
     lookup_field = 'id'
-    serializer_class = ArmorSerializer
-    queryset = Armor.objects.all()
+    serializer_class = EquipmentSerializer
+    queryset = Equipment.objects.all()
+
 
 class BackgroundViewGET(ListAPIView):
     """
@@ -269,31 +269,31 @@ class CombatInfoViewPUT(RetrieveUpdateDestroyAPIView):
     queryset = CombatInfo.objects.all()
 
 
-class GearViewGET(ListAPIView):
+class PhysicalDefenseViewGET(ListAPIView):
 	"""
-	View to retrieve all Gear objects
+	Class to retrieve PhysicalDefense entries
 	"""
 	lookup_field = 'id'
-	serializer_class = GearSerializer
-	queryset = Gear.objects.all()
+	serializer_class = PhysicalDefenseSerializer
+	queryset = PhysicalDefense.objects.all()
 
-class GearViewPOST(CreateAPIView):
-    """
-    View to create new Gear objects
-    """
-    permission_classes = (AllowAny,)
-    serializer_class = GearSerializer
-    queryset = Gear.objects.none()
+class PhysicalDefenseViewPOST(CreateAPIView):
+	"""
+	View to create new PhysicalDefense objects
+	"""
+	permission_classes = (AllowAny,)
+	serializer_class = PhysicalDefenseSerializer
+	queryset = PhysicalDefense.objects.none()
 
-class GearViewPUT(RetrieveUpdateDestroyAPIView):
+class PhysicalDefenseViewPUT(RetrieveUpdateDestroyAPIView):
     """
-    View to PUT and DELETE a Gear object by id
+    View to PUT and DELETE an PhysicalDefense object by id
 
 	:return: None
     """
     lookup_field = 'id'
-    serializer_class = GearSerializer
-    queryset = Gear.objects.all()
+    serializer_class = PhysicalDefenseSerializer
+    queryset = PhysicalDefense.objects.all()
 
 
 class PhysicalAttackViewGET(ListAPIView):
@@ -431,30 +431,3 @@ class SpellcastingViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = SpellcastingSerializer
     queryset = Spellcasting.objects.none()
-
-
-class WeaponViewGET(ListAPIView):
-	"""
-	View to retrieve all Weapon objects
-	"""
-	lookup_field = 'id'
-	serializer_class = WeaponSerializer
-	queryset = Weapon.objects.all()
-
-class WeaponViewPOST(CreateAPIView):
-    """
-    View to create new Weapon objects
-    """
-    permission_classes = (AllowAny,)
-    serializer_class = WeaponSerializer
-    queryset = Weapon.objects.none()
-
-class WeaponViewPUT(RetrieveUpdateDestroyAPIView):
-    """
-    View to PUT and DELETE Weapon objects by id
-
-	:return: None
-    """
-    lookup_field = 'id'
-    serializer_class = WeaponSerializer
-    queryset = Weapon.objects.all()

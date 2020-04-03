@@ -42,17 +42,6 @@ class NPCSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
-class ArmorSerializer(serializers.ModelSerializer):
-	"""
-	Serializer class for Armor model
-	"""
-
-	class Meta:
-		model = models.Armor
-		fields = "__all__"
-
-
 class CurrencySerializer(serializers.ModelSerializer):
 	"""
 	Serializer class for Currency model
@@ -89,6 +78,16 @@ class CombatInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.CombatInfo
         fields = "__all__"
+
+
+class PhysicalDefenseSerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for PhysicaDefense model
+	"""
+	
+	class Meta:
+		model = models.PhysicalDefense
+		fields = "__all__"
 
 
 class PhysicalAttackSerializer(serializers.ModelSerializer):
@@ -148,20 +147,11 @@ class SaveSerializer(serializers.ModelSerializer):
         read_only_fields = ("str_save", "dex_save", "cons_save", "int_save", "wis_save", "cha_save")
 
 
-class WeaponSerializer(serializers.ModelSerializer):
+class EquipmentSerializer(serializers.ModelSerializer):
 	"""
-	Serializer class for Weapon model
-	"""
-
-	class Meta:
-		model = models.Weapon
-		fields = "__all__"
-
-class GearSerializer(serializers.ModelSerializer):
-	"""
-	Serializer class for Gear model
+	Serializer class for Equipment model
 	"""
 
 	class Meta:
-		model = models.Gear
+		model = models.Equipment
 		fields = "__all__"
