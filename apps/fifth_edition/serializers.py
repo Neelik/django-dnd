@@ -97,7 +97,7 @@ class PhysicalAttackSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.PhysicalAttack
-        fields = ("id", "ability_score", "name", "damage_type", "dice_type", "dice_count", "str_atk_bonus", "dex_atk_bonus")
+        fields = ("id", "ability_score", "name", "weapon_type", "properties", "dice_type", "dice_count", "damage_type", "str_atk_bonus", "dex_atk_bonus")
         read_only_fields = ("str_atk_bonus", "dex_atk_bonus")
 
 
