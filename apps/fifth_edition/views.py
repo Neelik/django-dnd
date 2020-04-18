@@ -284,7 +284,7 @@ class PhysicalDefenseViewGET(ListAPIView):
     """
     lookup_field = 'id'
     serializer_class = PhysicalDefenseSerializer
-    queryset = PhysicalDefense.objects.all()
+    queryset = PhysicalDefense.objects.all().order_by("id")
 
 class PhysicalDefenseViewPOST(CreateAPIView):
     """

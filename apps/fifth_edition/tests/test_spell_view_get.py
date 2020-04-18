@@ -5,9 +5,9 @@ from random import randint
 import datetime
 
 
-class TestCombatInfoViewGET(TestCase):
+class TestSpellViewGET(TestCase):
     """
-    Test class to verify functionality of the CombatInfoViewGET API view.
+    Test class to verify functionality of the SpellViewGET API view.
     """
 
     def setUp(self):
@@ -17,7 +17,6 @@ class TestCombatInfoViewGET(TestCase):
         :return: None
         """
 
-        # Create a set of Characters, with varying data
         for num in range(1, 6):
             if num == 1:
                 spell_data = {
