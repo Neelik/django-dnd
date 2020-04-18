@@ -9,19 +9,6 @@ class TestSpellViewPOST(TestCase):
     Test class to verify functionality of the Spell ViewPOST API view.
     """
 
-    """def setUp(self):
-        spell_data = {
-            "casting_time": datetime.timedelta(days = 0, minutes = 10, seconds = 30),
-            "spell_range": 15,
-            "components": "S, V",
-            "duration": datetime.timedelta(days = 1, minutes = 0, seconds = 0),
-            "level": 17,
-            "name": "Test Spell",
-            "desc": "Test Spell Description",
-            "magic_school": "illusion"
-        }
-        Spell.objects.create(**spell_data)"""
-
     def test_spell_post_successful(self):
         """
         Test to verify we can successfully create a new Spell object
