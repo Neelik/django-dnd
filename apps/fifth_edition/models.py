@@ -429,6 +429,7 @@ class Spellcasting(models.Model):
 
     ability_score = models.OneToOneField(AbilityScore, on_delete=models.CASCADE)
     spellcasting_ability = models.CharField(max_length=3, choices=SPELLCASTING_ABILITY_CHOICES)
+    spell_slots = models.PositiveIntegerField(default=0)
 
     @property
     def spell_attack(self):
@@ -621,3 +622,32 @@ class Currency(models.Model):
 
 	class Meta:
 		verbose_name_plural = "Currency"
+
+
+class Spell(models.Model):
+    """
+    Model to create spells
+    """
+    MAGIC_SCHOOL_CHOICES =(
+    ("Abjuration", "Abjuration"),
+    ("Conjuration", "Conjuration"),
+    ("Divination", "Divination"),
+    ("Enchantment", "Enchantment"),
+    ("Evocation", "Evocation"),
+    ("Illusion", "Illusion"),
+    ("Necromancy", "Necromancy"),
+    ("Transmutation", "Transmutation")
+    )
+
+    casting_time = models.DurationField()
+    spell_range = models.PositiveIntegerField(default=0, help_text="Spell range in feet")
+    components = models.CharField(max_length=32)
+    duration = models.DurationField()
+    level = models.PositiveIntegerField(default=0, help_text="Spell level")
+    Name = models.CharField(unique=True, max_length=32)
+    Desc = models.CharField(max_length=280)
+    magic_school = models.CharField(max_length=32, choices=MAGIC_SCHOOL_CHOICES)
+
+    class Meta:
+        verbose_name_plural = "Spells"
+

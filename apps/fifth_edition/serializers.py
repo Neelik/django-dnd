@@ -123,7 +123,7 @@ class SpellcastingSerializer(DynamicFieldsModelSerializer):
 
     class Meta:
         model = models.Spellcasting
-        fields = ("id", "ability_score", "spellcasting_ability", "spell_attack", "spell_save")
+        fields = ("id", "ability_score", "spellcasting_ability", "spell_attack", "spell_save", "spell_slots")
         read_only_fields = ("spell_attack", "spell_save")
 
 
@@ -154,4 +154,13 @@ class EquipmentSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = models.Equipment
+		fields = "__all__"
+
+class SpellSerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for Spell model
+	"""
+
+	class Meta:
+		model = models.Spell
 		fields = "__all__"

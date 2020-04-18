@@ -1,6 +1,6 @@
-from .models import Character, NPC, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background, Currency, Equipment, PhysicalDefense
+from .models import Character, NPC, AbilityScore, Skills, Spellcasting, Spell, Save, PhysicalAttack, CombatInfo, Background, Currency, Equipment, PhysicalDefense
 from .serializers import (CharacterSerializer, NPCSerializer, AbilityScoreSerializer, SkillsSerializer,
-                          SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer, EquipmentSerializer,
+                          SpellcastingSerializer, SpellSerializer, SaveSerializer, PhysicalAttackSerializer, EquipmentSerializer,
                           CombatInfoSerializer, BackgroundSerializer, CurrencySerializer, PhysicalDefenseSerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
@@ -417,6 +417,8 @@ class SpellcastingViewGET(ListAPIView):
                 kwargs["fields"] = ("id", "spell_attack")
             elif field == "spell_save":
                 kwargs["fields"] = ("id", "spell_save")
+            elif field == "spell_slots":
+                kwargs["fields"] = ("id", "spell_slots")
 
         return serializer_class(*args, **kwargs)
 
@@ -440,3 +442,31 @@ class SpellcastingViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = SpellcastingSerializer
     queryset = Spellcasting.objects.none()
+
+
+class SpellViewGET(ListAPIView):
+	"""
+	View to retrieve equipment objects
+	"""
+	lookup_field = 'id'
+	serializer_class = SpellSerializer
+	queryset = Spell.objects.all()
+
+class SpellViewPOST(CreateAPIView):
+    """
+    View to create new spell
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = SpellSerializer
+    queryset = Spell.objects.none()
+
+class SpellViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE an spell by id
+
+	:return: None
+    """
+    lookup_field = 'id'
+    serializer_class = SpellSerializer
+    queryset = Spell.objects.all()
+

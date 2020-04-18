@@ -57,4 +57,7 @@ urlpatterns = [
     url(r'^api/save/create/$', fe_views.SaveViewPOST.as_view()),
     url(r'^api/skills/create/$', fe_views.SkillsViewPOST.as_view()),
     url(r'^api/spellcasting/create/$', fe_views.SpellcastingViewPOST.as_view()),
+    url(r'^api/spell/create/$', fe_views.SpellViewPOST.as_view()),
+    url(r'^api/spell$', fe_views.SpellViewGET.as_view()),
+    url(r'^api/spell/put-delete/(?P<id>\d+)/$', fe_views.SpellViewPUT.as_view()),
 ]
