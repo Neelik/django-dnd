@@ -55,7 +55,7 @@ class EquipmentViewGET(ListAPIView):
     """
     lookup_field = 'id'
     serializer_class = EquipmentSerializer
-    queryset = Equipment.objects.all()
+    queryset = Equipment.objects.all().order_by("id")
 
 class EquipmentViewPOST(CreateAPIView):
     """
