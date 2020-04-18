@@ -162,33 +162,33 @@ class Language(models.Model):
 
 
 class PhysicalDefense(models.Model):
-	"""
-	Model for information related to physical defense
-	"""
-	DEFENSE_TYPE_CHOICES = (
-		("Light", "Light"),
-		("Medium", "Medium"),
-		("Heavy", "Heavy"),
-		("Shield", "Shield")
-	)
+    """
+    Model for information related to physical defense
+    """
+    DEFENSE_TYPE_CHOICES = (
+        ("Light", "Light"),
+        ("Medium", "Medium"),
+        ("Heavy", "Heavy"),
+        ("Shield", "Shield")
+    )
 
-	STEALTH_TYPE_CHOICES = (
-		("Disadvantage", "Disadvantage"),
-		("None", "None"),
-		("Advantage", "Advantage")
-	)
+    STEALTH_TYPE_CHOICES = (
+        ("Disadvantage", "Disadvantage"),
+        ("None", "None"),
+        ("Advantage", "Advantage")
+    )
 
-	defensetype = models.CharField(max_length=32, choices=DEFENSE_TYPE_CHOICES)
-	name = models.CharField(max_length=32)
-	ac = models.IntegerField(help_text="Armor Class (AC) of armor.")
-	strength = models.IntegerField(help_text="Strength requirement to wear without Movement Speed (-10) penalty.")
-	stealth = models.CharField(max_length=32, choices=STEALTH_TYPE_CHOICES)
+    defensetype = models.CharField(max_length=32, choices=DEFENSE_TYPE_CHOICES)
+    name = models.CharField(max_length=32)
+    ac = models.IntegerField(help_text="Armor Class (AC) of armor.")
+    strength = models.IntegerField(help_text="Strength requirement to wear without Movement Speed (-10) penalty.")
+    stealth = models.CharField(max_length=32, choices=STEALTH_TYPE_CHOICES)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
 
-	class Meta:
-		verbose_name_plural = "PhysicalDefense"
+    class Meta:
+        verbose_name_plural = "PhysicalDefense"
 
 
 class PhysicalAttack(models.Model):
@@ -241,65 +241,65 @@ class PhysicalAttack(models.Model):
 
 
 class Equipment(models.Model):
-	"""
-	Model storing information about all equipment
-	"""
-	EQUIPMENT_TYPE_CHOICES = {
-		("Armor", "Armor"),
-		("Weapon", "Weapon"),
-		("Gear", "Gear"),
-		("Tool", "Tool"),
-		("Other", "Other")
-	}
+    """
+    Model storing information about all equipment
+    """
+    EQUIPMENT_TYPE_CHOICES = {
+        ("Armor", "Armor"),
+        ("Weapon", "Weapon"),
+        ("Gear", "Gear"),
+        ("Tool", "Tool"),
+        ("Other", "Other")
+    }
 
-	name = models.CharField(max_length=64)
-	cost = models.PositiveIntegerField(help_text="Value in gold pieces.")
-	weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Weight in pounds.")
-	description = models.TextField()
-	type = models.CharField(max_length=32, choices=EQUIPMENT_TYPE_CHOICES)
+    name = models.CharField(max_length=64)
+    cost = models.PositiveIntegerField(help_text="Value in gold pieces.")
+    weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Weight in pounds.")
+    description = models.TextField()
+    type = models.CharField(max_length=32, choices=EQUIPMENT_TYPE_CHOICES)
 
-	physical_attack = models.ForeignKey(PhysicalAttack, on_delete=models.CASCADE, blank=True, null=True)
-	physical_defense = models.ForeignKey(PhysicalDefense, on_delete=models.CASCADE, blank=True, null=True)
+    physical_attack = models.ForeignKey(PhysicalAttack, on_delete=models.CASCADE, blank=True, null=True)
+    physical_defense = models.ForeignKey(PhysicalDefense, on_delete=models.CASCADE, blank=True, null=True)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
 
-	class Meta:
-		verbose_name_plural = "Equipment"
+    class Meta:
+        verbose_name_plural = "Equipment"
 
 
 class Character(models.Model):
-	"""
-	Model to store information about a character in DnD 5e
-	"""
+    """
+    Model to store information about a character in DnD 5e
+    """
 
-	RACE_CHOICES = (
-		("Dragonborn", "Dragonborn"),
-		("Dwarf", "Dwarf"),
-		("Elf", "Elf"),
-		("Gnome", "Gnome"),
-		("Half Elf", "Half Elf"),
-		("Half Orc", "Half Orc"),
-		("Halfling", "Halfling"),
-		("Human", "Human"),
-		("Tiefling", "Tiefling")
-	)
+    RACE_CHOICES = (
+        ("Dragonborn", "Dragonborn"),
+        ("Dwarf", "Dwarf"),
+        ("Elf", "Elf"),
+        ("Gnome", "Gnome"),
+        ("Half Elf", "Half Elf"),
+        ("Half Orc", "Half Orc"),
+        ("Halfling", "Halfling"),
+        ("Human", "Human"),
+        ("Tiefling", "Tiefling")
+    )
 
-	name = models.CharField(max_length=50, verbose_name='Character Name')
-	level = models.IntegerField(default=1, verbose_name='Level')
-	character_class = models.CharField(max_length=20, verbose_name='Class')
-	background = models.TextField(verbose_name='Background', null=True, blank=True)
-	player_name = models.CharField(max_length=50, verbose_name='Players Name')
-	race = models.CharField(max_length=20, choices=RACE_CHOICES, verbose_name='Race')
-	alignment = models.CharField(max_length=50, verbose_name='Alignment')
-	experience_points = models.PositiveIntegerField(default=0, verbose_name='Experience Points')
-	equipment = models.ManyToManyField(Equipment, blank=True)
+    name = models.CharField(max_length=50, verbose_name='Character Name')
+    level = models.IntegerField(default=1, verbose_name='Level')
+    character_class = models.CharField(max_length=20, verbose_name='Class')
+    background = models.TextField(verbose_name='Background', null=True, blank=True)
+    player_name = models.CharField(max_length=50, verbose_name='Players Name')
+    race = models.CharField(max_length=20, choices=RACE_CHOICES, verbose_name='Race')
+    alignment = models.CharField(max_length=50, verbose_name='Alignment')
+    experience_points = models.PositiveIntegerField(default=0, verbose_name='Experience Points')
+    equipment = models.ManyToManyField(Equipment, blank=True)
 
-	def __str__(self):
-		return self.name.capitalize()
+    def __str__(self):
+        return self.name.capitalize()
 
-	class Meta:
-		unique_together = ("name", "character_class", "race", "player_name")
+    class Meta:
+        unique_together = ("name", "character_class", "race", "player_name")
 
 
 class Race(models.Model):
@@ -534,94 +534,94 @@ class Tool(models.Model):
 
 
 class Currency(models.Model):
-	"""
-	Model to store and interact with the currency a character owns
-	"""
-	character = models.OneToOneField(Character, on_delete=models.CASCADE, related_name="character_currency")
-	balance = models.PositiveIntegerField(default=0)
-	electrum_use = models.BooleanField(default=False)
-	electrum = models.PositiveIntegerField(default=0)
+    """
+    Model to store and interact with the currency a character owns
+    """
+    character = models.OneToOneField(Character, on_delete=models.CASCADE, related_name="character_currency")
+    balance = models.PositiveIntegerField(default=0)
+    electrum_use = models.BooleanField(default=False)
+    electrum = models.PositiveIntegerField(default=0)
 
-	@property
-	def give_copper(self, amount):
-		balance += amount
+    @property
+    def give_copper(self, amount):
+        balance += amount
 
-	@property
-	def give_silver(self, amount):
-		balance += 10*amount
+    @property
+    def give_silver(self, amount):
+        balance += 10*amount
 
-	@property
-	def give_electrum(self, amount):
-		electrum += amount
+    @property
+    def give_electrum(self, amount):
+        electrum += amount
 
-	@property
-	def give_gold(self, amount):
-		balance += 100*amount
+    @property
+    def give_gold(self, amount):
+        balance += 100*amount
 
-	@property
-	def give_platinum(self, amount):
-		balance += 1000*amount
+    @property
+    def give_platinum(self, amount):
+        balance += 1000*amount
 
-	@property
-	def spend_copper(self, amount):
-		if amount < balance:
-			balance -= amount
-			return True
-		return False
+    @property
+    def spend_copper(self, amount):
+        if amount < balance:
+            balance -= amount
+            return True
+        return False
 
-	@property
-	def spend_silver(self, amount):
-		if amount*10 < balance:
-			balance -= amount*10
-			return True
-		return False
+    @property
+    def spend_silver(self, amount):
+        if amount*10 < balance:
+            balance -= amount*10
+            return True
+        return False
 
-	@property
-	def spend_electrum(self, amount):
-		if amount < electrum:
-			electrum -= amount
-			return True
-		return False
+    @property
+    def spend_electrum(self, amount):
+        if amount < electrum:
+            electrum -= amount
+            return True
+        return False
 
-	@property
-	def spend_gold(self, amount):
-		if amount*100 < balance:
-			balance -= amount*100
-			return True
-		return False
+    @property
+    def spend_gold(self, amount):
+        if amount*100 < balance:
+            balance -= amount*100
+            return True
+        return False
 
-	@property
-	def spend_platinum(self, amount):
-		if amount*1000 < balance:
-			balance -= amount*100
-			return True
-		return False
+    @property
+    def spend_platinum(self, amount):
+        if amount*1000 < balance:
+            balance -= amount*100
+            return True
+        return False
 
-	@property
-	def copper(self):
-		return balance % 10
+    @property
+    def copper(self):
+        return balance % 10
 
-	property
-	def silver(self):
-		return balance % 1000 % 100 // 10
+    property
+    def silver(self):
+        return balance % 1000 % 100 // 10
 
-	@property
-	def electrum(self):
-		return electrum
+    @property
+    def electrum(self):
+        return electrum
 
-	@property
-	def gold(self):
-		return balance % 1000 // 100
+    @property
+    def gold(self):
+        return balance % 1000 // 100
 
-	@property
-	def platinum(self):
-		return balance // 1000
+    @property
+    def platinum(self):
+        return balance // 1000
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
 
-	class Meta:
-		verbose_name_plural = "Currency"
+    class Meta:
+        verbose_name_plural = "Currency"
 
 
 class Spell(models.Model):
@@ -644,9 +644,12 @@ class Spell(models.Model):
     components = models.CharField(max_length=32)
     duration = models.DurationField()
     level = models.PositiveIntegerField(default=0, help_text="Spell level")
-    Name = models.CharField(unique=True, max_length=32)
-    Desc = models.CharField(max_length=280)
+    name = models.CharField(max_length=32)
+    desc = models.CharField(max_length=280, blank=True, null=True)
     magic_school = models.CharField(max_length=32, choices=MAGIC_SCHOOL_CHOICES)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name_plural = "Spells"

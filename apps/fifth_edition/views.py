@@ -50,12 +50,12 @@ class AbilityScoreViewPUT(RetrieveUpdateDestroyAPIView):
 
 
 class EquipmentViewGET(ListAPIView):
-	"""
-	View to retrieve equipment objects
-	"""
-	lookup_field = 'id'
-	serializer_class = EquipmentSerializer
-	queryset = Equipment.objects.all()
+    """
+    View to retrieve equipment objects
+    """
+    lookup_field = 'id'
+    serializer_class = EquipmentSerializer
+    queryset = Equipment.objects.all()
 
 class EquipmentViewPOST(CreateAPIView):
     """
@@ -69,7 +69,7 @@ class EquipmentViewPUT(RetrieveUpdateDestroyAPIView):
     """
     View to PUT and DELETE an equipment object by id
 
-	:return: None
+    :return: None
     """
     lookup_field = 'id'
     serializer_class = EquipmentSerializer
@@ -165,12 +165,12 @@ class CharacterViewPUT(RetrieveUpdateDestroyAPIView):
 
 
 class CurrencyViewGET(ListAPIView):
-	"""
-	View to retrieve Currency objects
-	"""
-	lookup_field = 'id'
-	serializer_class = CurrencySerializer
-	queryset = Currency.objects.all()
+    """
+    View to retrieve Currency objects
+    """
+    lookup_field = 'id'
+    serializer_class = CurrencySerializer
+    queryset = Currency.objects.all()
 
 class CurrencyViewPOST(CreateAPIView):
     """
@@ -184,7 +184,7 @@ class CurrencyViewPUT(RetrieveUpdateDestroyAPIView):
     """
     View to PUT and DELETE an Currency object by id
 
-	:return: None
+    :return: None
     """
     lookup_field = 'id'
     serializer_class = CurrencySerializer
@@ -279,26 +279,26 @@ class CombatInfoViewPUT(RetrieveUpdateDestroyAPIView):
 
 
 class PhysicalDefenseViewGET(ListAPIView):
-	"""
-	Class to retrieve PhysicalDefense entries
-	"""
-	lookup_field = 'id'
-	serializer_class = PhysicalDefenseSerializer
-	queryset = PhysicalDefense.objects.all()
+    """
+    Class to retrieve PhysicalDefense entries
+    """
+    lookup_field = 'id'
+    serializer_class = PhysicalDefenseSerializer
+    queryset = PhysicalDefense.objects.all()
 
 class PhysicalDefenseViewPOST(CreateAPIView):
-	"""
-	View to create new PhysicalDefense objects
-	"""
-	permission_classes = (AllowAny,)
-	serializer_class = PhysicalDefenseSerializer
-	queryset = PhysicalDefense.objects.none()
+    """
+    View to create new PhysicalDefense objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = PhysicalDefenseSerializer
+    queryset = PhysicalDefense.objects.none()
 
 class PhysicalDefenseViewPUT(RetrieveUpdateDestroyAPIView):
     """
     View to PUT and DELETE an PhysicalDefense object by id
 
-	:return: None
+    :return: None
     """
     lookup_field = 'id'
     serializer_class = PhysicalDefenseSerializer
@@ -445,12 +445,12 @@ class SpellcastingViewPOST(CreateAPIView):
 
 
 class SpellViewGET(ListAPIView):
-	"""
-	View to retrieve equipment objects
-	"""
-	lookup_field = 'id'
-	serializer_class = SpellSerializer
-	queryset = Spell.objects.all()
+    """
+    View to retrieve spell objects
+    """
+    lookup_field = 'id'
+    serializer_class = SpellSerializer
+    queryset = Spell.objects.all().order_by("id")
 
 class SpellViewPOST(CreateAPIView):
     """
@@ -464,9 +464,8 @@ class SpellViewPUT(RetrieveUpdateDestroyAPIView):
     """
     View to PUT and DELETE an spell by id
 
-	:return: None
+    :return: None
     """
     lookup_field = 'id'
     serializer_class = SpellSerializer
     queryset = Spell.objects.all()
-
