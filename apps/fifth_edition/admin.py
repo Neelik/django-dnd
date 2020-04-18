@@ -42,6 +42,7 @@ class SpellcastingAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(models.Background, BackgroundAdmin)
 admin.site.register(models.Character, CharacterAdmin)
+admin.site.register(models.AbilityScore, AbilityScoreAdmin)
 admin.site.register(models.NPC, NPCAdmin)
 admin.site.register(models.PhysicalAttack, PhysicalAttackAdmin)
 admin.site.register(models.Save, SaveAdmin)

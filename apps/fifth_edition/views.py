@@ -28,6 +28,15 @@ class AbilityScoreViewGET(ListAPIView):
 
         return queryset.order_by("id")
 
+class AbilityScoreViewPOST(CreateAPIView):
+    """
+    Class to create new ability score entries
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = AbilityScoreSerializer
+    queryset = AbilityScore.objects.none()
+
 
 class AbilityScoreViewPUT(RetrieveUpdateDestroyAPIView):
     """

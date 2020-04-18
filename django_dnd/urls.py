@@ -26,6 +26,7 @@ urlpatterns = [
 
     # fifth_edition
     url(r'^api/ability-scores$', fe_views.AbilityScoreViewGET.as_view()),
+    url(r'^api/ability-scores/create/$', fe_views.AbilityScoreViewPOST.as_view()),
     url(r'^api/ability-scores/put-delete/(?P<id>\d+)/$', fe_views.AbilityScoreViewPUT.as_view()),
     url(r'^api/ability-scores/(?P<id>\d+)/saves$', fe_views.SaveViewGET.as_view()),
     url(r'^api/ability-scores/(?P<id>\d+)/skills$', fe_views.SkillsViewGET.as_view()),
