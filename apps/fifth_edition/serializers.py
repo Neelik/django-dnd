@@ -32,6 +32,25 @@ class CharacterSerializer(serializers.ModelSerializer):
         model = models.Character
         fields = "__all__"
 
+class NPCSerializer(serializers.ModelSerializer):
+    """
+    Serializer class for the NPC model
+    """
+
+    class Meta:
+        model = models.NPC
+        fields = "__all__"
+
+
+class CurrencySerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for Currency model
+	"""
+
+	class Meta:
+		model = models.Currency
+		fields = "__all__"
+
 
 class AbilityScoreSerializer(serializers.ModelSerializer):
     """
@@ -61,6 +80,16 @@ class CombatInfoSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class PhysicalDefenseSerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for PhysicaDefense model
+	"""
+	
+	class Meta:
+		model = models.PhysicalDefense
+		fields = "__all__"
+
+
 class PhysicalAttackSerializer(serializers.ModelSerializer):
     """
     Serializer class for Physical Attack model
@@ -68,7 +97,7 @@ class PhysicalAttackSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.PhysicalAttack
-        fields = ("id", "ability_score", "name", "damage_type", "dice_type", "dice_count", "str_atk_bonus", "dex_atk_bonus")
+        fields = ("id", "ability_score", "name", "weapon_type", "properties", "dice_type", "dice_count", "damage_type", "str_atk_bonus", "dex_atk_bonus")
         read_only_fields = ("str_atk_bonus", "dex_atk_bonus")
 
 
@@ -94,7 +123,7 @@ class SpellcastingSerializer(DynamicFieldsModelSerializer):
 
     class Meta:
         model = models.Spellcasting
-        fields = ("id", "ability_score", "spellcasting_ability", "spell_attack", "spell_save")
+        fields = ("id", "ability_score", "spellcasting_ability", "spell_attack", "spell_save", "spell_slots")
         read_only_fields = ("spell_attack", "spell_save")
 
 
@@ -116,3 +145,22 @@ class SaveSerializer(serializers.ModelSerializer):
         model = models.Save
         fields = ("ability_score", "str_save", "dex_save", "cons_save", "int_save", "wis_save", "cha_save")
         read_only_fields = ("str_save", "dex_save", "cons_save", "int_save", "wis_save", "cha_save")
+
+
+class EquipmentSerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for Equipment model
+	"""
+
+	class Meta:
+		model = models.Equipment
+		fields = "__all__"
+
+class SpellSerializer(serializers.ModelSerializer):
+	"""
+	Serializer class for Spell model
+	"""
+
+	class Meta:
+		model = models.Spell
+		fields = ("id", "casting_time", "spell_range", "components", "duration", "level", "name", "desc", "magic_school")

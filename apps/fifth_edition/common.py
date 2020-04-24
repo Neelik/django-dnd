@@ -156,6 +156,13 @@ def orm_ify_query_params(query_params, model: str):
             "level_above": "level__gte",
             "level_below": "level__lte"
         },
+        "NPC": {
+            "name": "name__icontains",
+            "class": "npc_class__iexact",
+            "race": "race__iexact",
+            "level_above": "level__gte",
+            "level_below": "level__lte"
+        },
         "Equipment": {
             "id": "id__iexact",
             "equipment_name": "equipment_name__icontains",

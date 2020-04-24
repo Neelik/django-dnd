@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = ('127.0.1.1',)
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:8000',
+    'https://localhost:8000',
 )
 
 

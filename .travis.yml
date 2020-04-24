@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.6"
+install: 
+  - pip install -r requirements.txt
+script:
+  - ./scripts/database.sh; python manage.py test -v2
+services:
+  - postgresql
+notifications:
+  email:
+    - tylerfrench@u.boisestate.edu
+    - alexanderlakatos@u.boisestate.edu
+  slack: capstone-dnd:710tlaIlWGLnHRLMM9e5OT5J

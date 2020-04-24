@@ -16,6 +16,10 @@ class CharacterAdmin(admin.ModelAdmin):
     search_fields = ("name", "level", "character_class", "race", "player_name")
     readonly_fields = ("id",)
 
+class NPCAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", "level", "npc_class", "race")
+    search_fields = ("name", "level", "npc_class", "race")
+    readonly_fields = ("id",)
 
 class PhysicalAttackAdmin(admin.ModelAdmin):
     list_display = ("id", "name", 'damage_type')
@@ -38,6 +42,8 @@ class SpellcastingAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(models.Background, BackgroundAdmin)
 admin.site.register(models.Character, CharacterAdmin)
+admin.site.register(models.AbilityScore, AbilityScoreAdmin)
+admin.site.register(models.NPC, NPCAdmin)
 admin.site.register(models.PhysicalAttack, PhysicalAttackAdmin)
 admin.site.register(models.Save, SaveAdmin)
 admin.site.register(models.Skills, SkillsAdmin)

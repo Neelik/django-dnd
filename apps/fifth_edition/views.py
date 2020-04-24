@@ -1,7 +1,7 @@
-from .models import Character, AbilityScore, Skills, Spellcasting, Save, PhysicalAttack, CombatInfo, Background
-from .serializers import (CharacterSerializer, AbilityScoreSerializer, SkillsSerializer,
-                          SpellcastingSerializer, SaveSerializer, PhysicalAttackSerializer,
-                          CombatInfoSerializer, BackgroundSerializer)
+from .models import Character, NPC, AbilityScore, Skills, Spellcasting, Spell, Save, PhysicalAttack, CombatInfo, Background, Currency, Equipment, PhysicalDefense
+from .serializers import (CharacterSerializer, NPCSerializer, AbilityScoreSerializer, SkillsSerializer,
+                          SpellcastingSerializer, SpellSerializer, SaveSerializer, PhysicalAttackSerializer, EquipmentSerializer,
+                          CombatInfoSerializer, BackgroundSerializer, CurrencySerializer, PhysicalDefenseSerializer)
 from .common import orm_ify_query_params
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -28,6 +28,15 @@ class AbilityScoreViewGET(ListAPIView):
 
         return queryset.order_by("id")
 
+class AbilityScoreViewPOST(CreateAPIView):
+    """
+    Class to create new ability score entries
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = AbilityScoreSerializer
+    queryset = AbilityScore.objects.none()
+
 
 class AbilityScoreViewPUT(RetrieveUpdateDestroyAPIView):
     """
@@ -38,6 +47,33 @@ class AbilityScoreViewPUT(RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
     serializer_class = AbilityScoreSerializer
     queryset = AbilityScore.objects.all()
+
+
+class EquipmentViewGET(ListAPIView):
+    """
+    View to retrieve equipment objects
+    """
+    lookup_field = 'id'
+    serializer_class = EquipmentSerializer
+    queryset = Equipment.objects.all().order_by("id")
+
+class EquipmentViewPOST(CreateAPIView):
+    """
+    View to create new equipment objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = EquipmentSerializer
+    queryset = Equipment.objects.none()
+
+class EquipmentViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE an equipment object by id
+
+    :return: None
+    """
+    lookup_field = 'id'
+    serializer_class = EquipmentSerializer
+    queryset = Equipment.objects.all()
 
 
 class BackgroundViewGET(ListAPIView):
@@ -128,6 +164,77 @@ class CharacterViewPUT(RetrieveUpdateDestroyAPIView):
     queryset = Character.objects.all()
 
 
+class CurrencyViewGET(ListAPIView):
+    """
+    View to retrieve Currency objects
+    """
+    lookup_field = 'id'
+    serializer_class = CurrencySerializer
+    queryset = Currency.objects.all()
+
+class CurrencyViewPOST(CreateAPIView):
+    """
+    View to create new Currency objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = CurrencySerializer
+    queryset = Currency.objects.none()
+
+class CurrencyViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE an Currency object by id
+
+    :return: None
+    """
+    lookup_field = 'id'
+    serializer_class = CurrencySerializer
+    queryset = Currency.objects.all()
+
+
+class NPCViewGET(ListAPIView):
+    """
+    View to retrieve NPC objects
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = NPCSerializer
+
+    def get_queryset(self):
+        """
+        Method to retrieve the appropriate queryset of NPC objects to be returned by the API
+
+        :return: QuerySet of NPC objects
+        """
+
+        query_params = orm_ify_query_params(self.request.query_params, "NPC")
+        queryset = NPC.objects.none()
+        queryset = queryset | NPC.objects.filter(**query_params)
+
+        return queryset.order_by("-level")
+
+
+class NPCViewPOST(CreateAPIView):
+    """
+    Class to create new NPC entries
+
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = NPCSerializer
+    queryset = NPC.objects.none()
+
+
+class NPCViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    Method to PUT and DELETE a NPC
+
+    :return: VOID
+    """
+
+    lookup_field = 'id'
+    serializer_class = NPCSerializer
+    queryset = NPC.objects.all()
+
+
 class CombatInfoViewGET(ListAPIView):
     """
     View to retrieve Combat Info objects
@@ -169,6 +276,33 @@ class CombatInfoViewPUT(RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
     serializer_class = CombatInfoSerializer
     queryset = CombatInfo.objects.all()
+
+
+class PhysicalDefenseViewGET(ListAPIView):
+    """
+    Class to retrieve PhysicalDefense entries
+    """
+    lookup_field = 'id'
+    serializer_class = PhysicalDefenseSerializer
+    queryset = PhysicalDefense.objects.all().order_by("id")
+
+class PhysicalDefenseViewPOST(CreateAPIView):
+    """
+    View to create new PhysicalDefense objects
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = PhysicalDefenseSerializer
+    queryset = PhysicalDefense.objects.none()
+
+class PhysicalDefenseViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE an PhysicalDefense object by id
+
+    :return: None
+    """
+    lookup_field = 'id'
+    serializer_class = PhysicalDefenseSerializer
+    queryset = PhysicalDefense.objects.all()
 
 
 class PhysicalAttackViewGET(ListAPIView):
@@ -283,6 +417,8 @@ class SpellcastingViewGET(ListAPIView):
                 kwargs["fields"] = ("id", "spell_attack")
             elif field == "spell_save":
                 kwargs["fields"] = ("id", "spell_save")
+            elif field == "spell_slots":
+                kwargs["fields"] = ("id", "spell_slots")
 
         return serializer_class(*args, **kwargs)
 
@@ -306,3 +442,30 @@ class SpellcastingViewPOST(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = SpellcastingSerializer
     queryset = Spellcasting.objects.none()
+
+
+class SpellViewGET(ListAPIView):
+    """
+    View to retrieve spell objects
+    """
+    lookup_field = 'id'
+    serializer_class = SpellSerializer
+    queryset = Spell.objects.all().order_by("id")
+
+class SpellViewPOST(CreateAPIView):
+    """
+    View to create new spell
+    """
+    permission_classes = (AllowAny,)
+    serializer_class = SpellSerializer
+    queryset = Spell.objects.none()
+
+class SpellViewPUT(RetrieveUpdateDestroyAPIView):
+    """
+    View to PUT and DELETE an spell by id
+
+    :return: None
+    """
+    lookup_field = 'id'
+    serializer_class = SpellSerializer
+    queryset = Spell.objects.all()

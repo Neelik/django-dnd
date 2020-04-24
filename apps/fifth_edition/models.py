@@ -69,9 +69,9 @@ class Alignment(models.Model):
         verbose_name_plural = "Alignments"
 
 
-class Character(models.Model):
+class NPC(models.Model):
     """
-    Model to store information about a character in DnD 5e
+    Model to store information about a NPC in DnD 5e
     """
 
     RACE_CHOICES = (
@@ -86,21 +86,18 @@ class Character(models.Model):
         ("Tiefling", "Tiefling")
     )
 
-    name = models.CharField(max_length=50, verbose_name='Character Name')
+    name = models.CharField(max_length=50, verbose_name='NPC Name')
     level = models.IntegerField(default=1, verbose_name='Level')
-    character_class = models.CharField(max_length=20, verbose_name='Class')
+    npc_class = models.CharField(max_length=20, verbose_name='Class')
     background = models.TextField(verbose_name='Background', null=True, blank=True)
-    player_name = models.CharField(max_length=50, verbose_name='Players Name')
     race = models.CharField(max_length=20, choices=RACE_CHOICES, verbose_name='Race')
     alignment = models.CharField(max_length=50, verbose_name='Alignment')
-    experience_points = models.PositiveIntegerField(default=0, verbose_name='Experience Points')
 
     def __str__(self):
         return self.name.capitalize()
 
     class Meta:
-        unique_together = ("name", "character_class", "race", "player_name")
-
+        unique_together = ("name", "npc_class", "race")
 
 class CombatInfo(models.Model):
     """
@@ -164,6 +161,36 @@ class Language(models.Model):
         verbose_name_plural = "Languages"
 
 
+class PhysicalDefense(models.Model):
+    """
+    Model for information related to physical defense
+    """
+    DEFENSE_TYPE_CHOICES = (
+        ("Light", "Light"),
+        ("Medium", "Medium"),
+        ("Heavy", "Heavy"),
+        ("Shield", "Shield")
+    )
+
+    STEALTH_TYPE_CHOICES = (
+        ("Disadvantage", "Disadvantage"),
+        ("None", "None"),
+        ("Advantage", "Advantage")
+    )
+
+    defensetype = models.CharField(max_length=32, choices=DEFENSE_TYPE_CHOICES)
+    name = models.CharField(max_length=32)
+    ac = models.IntegerField(help_text="Armor Class (AC) of armor.")
+    strength = models.IntegerField(help_text="Strength requirement to wear without Movement Speed (-10) penalty.")
+    stealth = models.CharField(max_length=32, choices=STEALTH_TYPE_CHOICES)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "PhysicalDefense"
+
+
 class PhysicalAttack(models.Model):
     """
     Model for information related to physical attacks
@@ -185,6 +212,7 @@ class PhysicalAttack(models.Model):
     )
 
     DICE_TYPE_CHOICES = (
+        ("1", "1"),
         ("d4", "d4"),
         ("d6", "d6"),
         ("d8", "d8"),
@@ -194,9 +222,11 @@ class PhysicalAttack(models.Model):
 
     ability_score = models.ForeignKey(AbilityScore, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    damage_type = models.CharField(max_length=2, choices=DAMAGE_TYPE_CHOICES)
-    dice_type = models.CharField(max_length=3, choices=DICE_TYPE_CHOICES)
-    dice_count = models.IntegerField(default=1)
+    weapon_type = models.CharField(max_length=128)   
+    properties = models.CharField(max_length=128)
+    dice_type = models.CharField(max_length=3, blank=True, null=True, choices=DICE_TYPE_CHOICES)
+    dice_count = models.IntegerField(default=1, blank=True, null=True)  
+    damage_type = models.CharField(max_length=2, blank=True, null=True, choices=DAMAGE_TYPE_CHOICES)
 
     @property
     def str_atk_bonus(self):
@@ -208,6 +238,68 @@ class PhysicalAttack(models.Model):
 
     def __str__(self):
         return "Name: {} Dice Count: {} Dice Type: {} Damage Type: {}".format(self.name, self.dice_count, self.dice_type, self.damage_type)
+
+
+class Equipment(models.Model):
+    """
+    Model storing information about all equipment
+    """
+    EQUIPMENT_TYPE_CHOICES = {
+        ("Armor", "Armor"),
+        ("Weapon", "Weapon"),
+        ("Gear", "Gear"),
+        ("Tool", "Tool"),
+        ("Other", "Other")
+    }
+
+    name = models.CharField(max_length=64)
+    cost = models.PositiveIntegerField(help_text="Value in gold pieces.")
+    weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Weight in pounds.")
+    description = models.TextField()
+    type = models.CharField(max_length=32, choices=EQUIPMENT_TYPE_CHOICES)
+
+    physical_attack = models.ForeignKey(PhysicalAttack, on_delete=models.CASCADE, blank=True, null=True)
+    physical_defense = models.ForeignKey(PhysicalDefense, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Equipment"
+
+
+class Character(models.Model):
+    """
+    Model to store information about a character in DnD 5e
+    """
+
+    RACE_CHOICES = (
+        ("Dragonborn", "Dragonborn"),
+        ("Dwarf", "Dwarf"),
+        ("Elf", "Elf"),
+        ("Gnome", "Gnome"),
+        ("Half Elf", "Half Elf"),
+        ("Half Orc", "Half Orc"),
+        ("Halfling", "Halfling"),
+        ("Human", "Human"),
+        ("Tiefling", "Tiefling")
+    )
+
+    name = models.CharField(max_length=50, verbose_name='Character Name')
+    level = models.IntegerField(default=1, verbose_name='Level')
+    character_class = models.CharField(max_length=20, verbose_name='Class')
+    background = models.TextField(verbose_name='Background', null=True, blank=True)
+    player_name = models.CharField(max_length=50, verbose_name='Players Name')
+    race = models.CharField(max_length=20, choices=RACE_CHOICES, verbose_name='Race')
+    alignment = models.CharField(max_length=50, verbose_name='Alignment')
+    experience_points = models.PositiveIntegerField(default=0, verbose_name='Experience Points')
+    equipment = models.ManyToManyField(Equipment, blank=True)
+
+    def __str__(self):
+        return self.name.capitalize()
+
+    class Meta:
+        unique_together = ("name", "character_class", "race", "player_name")
 
 
 class Race(models.Model):
@@ -337,6 +429,7 @@ class Spellcasting(models.Model):
 
     ability_score = models.OneToOneField(AbilityScore, on_delete=models.CASCADE)
     spellcasting_ability = models.CharField(max_length=3, choices=SPELLCASTING_ABILITY_CHOICES)
+    spell_slots = models.PositiveIntegerField(default=0)
 
     @property
     def spell_attack(self):
@@ -430,7 +523,7 @@ class Tool(models.Model):
 
     cost = models.DecimalField(decimal_places=2, max_digits=10, help_text="Value in gold pieces.")
     name = models.CharField(max_length=32)
-    set = models.CharField(max_length=16, choices=TOOL_SET_CHOICES)
+    set = models.CharField(max_length=32, choices=TOOL_SET_CHOICES)
     weight = models.DecimalField(decimal_places=2, max_digits=10, help_text="Value in pounds.")
 
     def __str__(self):
@@ -438,3 +531,126 @@ class Tool(models.Model):
 
     class Meta:
         verbose_name_plural = "Tools"
+
+
+class Currency(models.Model):
+    """
+    Model to store and interact with the currency a character owns
+    """
+    character = models.OneToOneField(Character, on_delete=models.CASCADE, related_name="character_currency")
+    balance = models.PositiveIntegerField(default=0)
+    electrum_use = models.BooleanField(default=False)
+    electrum = models.PositiveIntegerField(default=0)
+
+    @property
+    def give_copper(self, amount):
+        balance += amount
+
+    @property
+    def give_silver(self, amount):
+        balance += 10*amount
+
+    @property
+    def give_electrum(self, amount):
+        electrum += amount
+
+    @property
+    def give_gold(self, amount):
+        balance += 100*amount
+
+    @property
+    def give_platinum(self, amount):
+        balance += 1000*amount
+
+    @property
+    def spend_copper(self, amount):
+        if amount < balance:
+            balance -= amount
+            return True
+        return False
+
+    @property
+    def spend_silver(self, amount):
+        if amount*10 < balance:
+            balance -= amount*10
+            return True
+        return False
+
+    @property
+    def spend_electrum(self, amount):
+        if amount < electrum:
+            electrum -= amount
+            return True
+        return False
+
+    @property
+    def spend_gold(self, amount):
+        if amount*100 < balance:
+            balance -= amount*100
+            return True
+        return False
+
+    @property
+    def spend_platinum(self, amount):
+        if amount*1000 < balance:
+            balance -= amount*100
+            return True
+        return False
+
+    @property
+    def copper(self):
+        return balance % 10
+
+    property
+    def silver(self):
+        return balance % 1000 % 100 // 10
+
+    @property
+    def electrum(self):
+        return electrum
+
+    @property
+    def gold(self):
+        return balance % 1000 // 100
+
+    @property
+    def platinum(self):
+        return balance // 1000
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Currency"
+
+
+class Spell(models.Model):
+    """
+    Model to create spells
+    """
+    MAGIC_SCHOOL_CHOICES =(
+    ("Abjuration", "Abjuration"),
+    ("Conjuration", "Conjuration"),
+    ("Divination", "Divination"),
+    ("Enchantment", "Enchantment"),
+    ("Evocation", "Evocation"),
+    ("Illusion", "Illusion"),
+    ("Necromancy", "Necromancy"),
+    ("Transmutation", "Transmutation")
+    )
+
+    casting_time = models.DurationField()
+    spell_range = models.PositiveIntegerField(default=0, help_text="Spell range in feet")
+    components = models.CharField(max_length=32)
+    duration = models.DurationField()
+    level = models.PositiveIntegerField(default=0, help_text="Spell level")
+    name = models.CharField(max_length=32)
+    desc = models.CharField(max_length=280, blank=True, null=True)
+    magic_school = models.CharField(max_length=32, choices=MAGIC_SCHOOL_CHOICES)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Spells"
+

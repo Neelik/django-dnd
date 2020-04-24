@@ -1,0 +1,459 @@
+[
+     {
+          "fields": {
+            "ability_score": 2, "name": "Club",
+			"weapon_type": "Simple Melee Weapon",
+            "properties": "Finesse, light, thrown (range 20/60)",
+            "dice_type": "d4",
+            "dice_count": 1,
+            "damage_type": "bl"
+        },
+          "pk": 1,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Dagger",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "Finesse, light, thrown (range 20/60)",
+          "dice_type": "d4",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 2,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Greatclub",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "Two-handed",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "bl"
+          },
+          "pk": 3,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Handaxe",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "Light, thrown (range 20/60)",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 4,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Javelin",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "Thrown (range 30/120)",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 5,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Light hammer",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "Light, thrown (range 20/60)",
+          "dice_type": "d4",
+          "dice_count": 1,
+          "damage_type": "bl"
+          },
+          "pk": 6,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Mace",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "bl"
+          },
+          "pk": 7,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Quarterstaff",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "Versatile (1d8)",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "bl"
+          },
+          "pk": 8,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Sickle",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "Light",
+          "dice_type": "d4",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 9,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Spear",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "Thrown (range 20/60), versatile (1d8)",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 10,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Unarmed Strike",
+          "weapon_type": "Simple Melee Weapon",
+          "properties": "",
+          "dice_type": "1",
+          "dice_count": 1,
+          "damage_type": "bl"
+          },
+          "pk": 11,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Crossbow, light",
+          "weapon_type": "Simple Ranged Weapon",
+          "properties": "Ammunition (rang 80/320), loading, two-handed",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 12,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Dart",
+          "weapon_type": "Simple Ranged Weapon",
+          "properties": "Finesse, thrown (range 20/60)",
+          "dice_type": "d4",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 13,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Shortbow",
+          "weapon_type": "Simple Ranged Weapon",
+          "properties": "Ammunition,(range 80/320), two-handed",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 14,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Sling",
+          "weapon_type": "Simple Ranged Weapon",
+          "properties": "Ammunition (range 30/120)",
+          "dice_type": "d4",
+          "dice_count": 1,
+          "damage_type": "bl"
+          },
+          "pk": 15,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Battleaxe",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Versatile (1d10)",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 16,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Flail",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "bl"
+          },
+          "pk": 17,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Glaive",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Heavy, reach, two-handed",
+          "dice_type": "d10",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 18,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Greataxe",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Heavy, two-handed",
+          "dice_type": "d12",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 19,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Greatsword",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Heavy, two-handed",
+          "dice_type": "d6",
+          "dice_count": 2,
+          "damage_type": "sl"
+          },
+          "pk": 20,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Halberd",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Heavy, reach, two-handed",
+          "dice_type": "d10",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 21,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Lance",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Reach, special",
+          "dice_type": "d12",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 22,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Longsword",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Versatile (1d10)",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 23,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Maul",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Heavy, two-handed",
+          "dice_type": "d6",
+          "dice_count": 2,
+          "damage_type": "bl"
+          },
+          "pk": 24,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Morningstar",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 25,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Pike",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Heavy, reach, two-handed",
+          "dice_type": "d10",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 26,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Rapier",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Finesse",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 27,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Scimitar",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Finesse, light",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 28,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Shortsword",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Finesse, light",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 29,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Trident",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Thrown (range 20/60), versatile (1d8)",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 30,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "War pick",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 31,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Warhammer",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Versatile (1d10)",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "bl"
+          },
+          "pk": 32,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Whip",
+          "weapon_type": "Martial Melee Weapon",
+          "properties": "Finesse, reach",
+          "dice_type": "d4",
+          "dice_count": 1,
+          "damage_type": "sl"
+          },
+          "pk": 33,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Blowgun",
+          "weapon_type": "Martial Ranged Weapon",
+          "properties": "Ammunition (range 25/100), loading",
+          "dice_type": "1",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 34,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Crossbow, hand",
+          "weapon_type": "Martial Ranged Weapon",
+          "properties": "Ammunition (range 30/120), light, loading",
+          "dice_type": "d6",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 35,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Crossbow, heavy",
+          "weapon_type": "Martial Ranged Weapon",
+          "properties": "Ammunition (range 100/400), heavy, loading, two-handed",
+          "dice_type": "d10",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 36,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Longbow", 
+          "weapon_type": "Martial Ranged Weapon",
+          "properties": "Ammunition (range 150/600), heavy, two-handed",
+          "dice_type": "d8",
+          "dice_count": 1,
+          "damage_type": "pi"
+          },
+          "pk": 37,
+          "model": "fifth_edition.PhysicalAttack"
+    },
+    {
+          "fields": {
+          "ability_score": 2, "name": "Net",
+          "weapon_type": "Martial Ranged Weapon",
+          "properties": "Special, thrown (range 5/15)",
+          "dice_type": null,
+          "dice_count": null,
+          "damage_type": "bl"
+          },
+          "pk": 38,
+          "model": "fifth_edition.PhysicalAttack"
+     }
+]
+
