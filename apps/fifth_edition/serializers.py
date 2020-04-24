@@ -163,4 +163,4 @@ class SpellSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = models.Spell
-		fields = ("casting_time", "spell_range", "components", "duration", "level", "name", "desc", "magic_school")
+		fields = ("id", "casting_time", "spell_range", "components", "duration", "level", "name", "desc", "magic_school")
